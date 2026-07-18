@@ -17,7 +17,6 @@
             background-color: #1a0f0a;
         }
 
-        /* Telefonda şəklin qüsursuz çıxması üçün yeni mobil-dostu fon strukturu */
         body::before {
             content: "";
             position: fixed;
@@ -42,7 +41,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* İçindəki elementləri yuxarı, orta və aşağı paylayır */
+            justify-content: space-between;
             background: linear-gradient(to bottom, rgba(26, 15, 10, 0.88), rgba(26, 15, 10, 0.78)), 
                         url('fon.jpg') no-repeat center center;
             background-size: cover;
@@ -64,7 +63,7 @@
             align-items: center;
             max-width: 400px;
             width: 100%;
-            margin-top: auto; /* Mərkəzləmə üçün */
+            margin-top: auto;
             margin-bottom: auto;
         }
 
@@ -174,13 +173,13 @@
             transform: scale(1.02);
         }
 
-        /* ==================== SƏNİN İMZAN (POWERED BY AYKHAN) ==================== */
+        /* ==================== AYKHAN LOGO & İMZA ==================== */
         .credits-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            margin-top: auto; /* Tam olaraq ən aşağıya sıxışdırır */
+            margin-top: auto;
             padding-bottom: 10px;
             opacity: 0;
             animation: fadeInText 1s forwards ease-in-out 1.9s;
@@ -202,7 +201,7 @@
         .star-icon {
             width: 22px;
             height: 22px;
-            fill: #ffb703; /* Göndərdiyin ulduz loqosunun vektor versiyası */
+            fill: #ffb703;
         }
 
         .brand-name {
@@ -332,7 +331,6 @@
 
 <!-- GİRİŞ EKRANI -->
 <div id="intro-overlay">
-    <!-- Loqo və Dil Seçimi Üçün Üst Kontyener -->
     <div class="intro-content-wrapper">
         <svg class="logo-svg" viewBox="0 0 320 100">
             <text x="10" y="75" class="text-letter letter-v">V</text>
@@ -354,23 +352,18 @@
         <button class="go-menu-btn" id="go-menu-text" onclick="enterSite()">Menüye Gidin</button>
     </div>
 
-    <!-- YENİ: SƏNİN LOGON VƏ İMZAN (TAM AŞAĞIDA) -->
     <div class="credits-container">
         <div class="credits-text">Powered by</div>
         <div class="credits-brand">
-            <!-- Göndərdiyiniz kompas/külək ulduzunun mükəmməl çəkilmiş SVG-si -->
             <svg class="star-icon" viewBox="0 0 100 100">
-                <!-- Əsas böyük şaquli şüalar -->
                 <polygon points="50,5 50,50 63,50" fill="#ffb703"/>
                 <polygon points="50,5 50,50 37,50" fill="#cca300"/>
                 <polygon points="50,95 50,50 37,50" fill="#ffb703"/>
                 <polygon points="50,95 50,50 63,50" fill="#cca300"/>
-                <!-- Əsas böyük üfüqi şüalar -->
                 <polygon points="95,50 50,50 50,63" fill="#ffb703"/>
                 <polygon points="95,50 50,50 50,37" fill="#cca300"/>
-                <polygon points,="5,50 50,50 50,37" fill="#ffb703"/>
+                <polygon points="5,50 50,50 50,37" fill="#ffb703"/>
                 <polygon points="5,50 50,50 50,63" fill="#cca300"/>
-                <!-- Çapraz kiçik şüalar -->
                 <polygon points="80,20 50,50 63,50" fill="#ffb703"/>
                 <polygon points="80,20 50,50 50,37" fill="#cca300"/>
                 <polygon points="20,80 50,50 37,50" fill="#ffb703"/>
@@ -394,7 +387,7 @@
 <script>
 const translations = {
     welcome: { tr: "Hoş Geldiniz", en: "Welcome", az: "Xoş Gəlmisiniz", ru: "Добро пожаловать" },
-    button: { tr: "Menüye Gidin", en: "Go to Menu", az: "Menyuya Keçid", ru: "Перейти к меню" }
+    button: { tr: "Menüye Gidin", en: "Go to Menu", az: "Menyuya Keçid", ru: "Перейти k меню" }
 };
 
 let currentLang = 'tr';
@@ -413,10 +406,25 @@ function enterSite() {
 }
 
 const vedMenu = {
-    "✨ Ved's Specials": [
+    "☀️ Günün Menüsü (Ekonomi Paketler)": [
+        { name: "Kurabiye", price: "150 ₺", image: "images/kurabiye.jpg" },
+        { name: "Affogato", price: "150 ₺", image: "images/affogato.jpg" },
+        { name: "Waffle + Çay", price: "300 ₺", image: "images/waffle-cay.jpg" },
+        { name: "Tavuklu Mantarlı Makarna + Coca Cola", price: "300 ₺", image: "images/makarna-cola.jpg" },
+        { name: "Waffle + Türk Kahvesi", price: "350 ₺", image: "images/waffle-turk.jpg" },
+        { name: "Waffle + Filtre Kahve", price: "350 ₺", image: "images/waffle-filtre.jpg" },
+        { name: "Waffle + Limonata", price: "350 ₺", image: "images/waffle-limonata.jpg" },
+        { name: "Dondurmalı Waffle", price: "375 ₺", image: "images/dondurmali-waffle.jpg" },
+        { name: "Waffle + Latte", price: "390 ₺", image: "images/waffle-latte.jpg" },
+        { name: "Waffle + Portakal Suyu (Taze Sıkılmış)", price: "400 ₺", image: "images/waffle-portakal.jpg" }
+    ],
+    "✨ Ved's Özel Menü & Specials": [
         { name: "Ved's Limonata", price: "175 ₺", image: "images/veds-limonata.jpg", isSpecial: true },
-        { name: "Dondurma", price: "Fiyat Belirtilmedi", image: "images/dondurma.jpg", isSpecial: true },
-        { name: "Affogato", price: "Fiyat Belirtilmedi", image: "images/affogato.jpg", isSpecial: true }
+        { name: "Dondurma (Külah)", price: "75 ₺", image: "images/dondurma-kulah.jpg", isSpecial: true },
+        { name: "Dondurma (Porsiyon)", price: "100 ₺", image: "images/dondurma-porsiyon.jpg", isSpecial: true },
+        { name: "Portakal Suyu + Makarna", price: "325 ₺", image: "images/portakal-makarna.jpg", isSpecial: true },
+        { name: "Arkadaş Menü (Waffle + 2 Çay)", price: "350 ₺", image: "images/arkadas-menu.jpg", isSpecial: true },
+        { name: "Makarna + Patates Kızartması + Cola", price: "450 ₺", image: "images/makarna-patates-cola.jpg", isSpecial: true }
     ],
     "🥪 Tostlar & Dürümler (Wrap)": [
         { name: "Sucuklu Tost", price: "150 ₺", image: "images/sucuklu-tost.jpg" },
@@ -439,7 +447,7 @@ const vedMenu = {
         { name: "Patates Kızartması", price: "150 ₺", image: "images/patates-kizartmasi.jpg" },
         { name: "Ved's Full Karışık Sepet", price: "225 ₺", image: "images/veds-sepet.jpg" }
     ],
-    "☕ Kahve Çochemileri (Türk Kahveleri)": [
+    "☕ Kahve Çeşitleri (Türk Kahveleri)": [
         { name: "Türk Kahvesi", price: "100 ₺", image: "images/turk-kahvesi.jpg" },
         { name: "Menengiç Kahvesi", price: "100 ₺", image: "images/menengic.jpg" },
         { name: "Damla Sakızlı Türk Kahvesi", price: "100 ₺", image: "images/damla-sakizli.jpg" },
@@ -482,7 +490,25 @@ const vedMenu = {
         { name: "Ice Karamel Latte", price: "155 ₺", image: "images/ice-karamel-latte.jpg" },
         { name: "Ice Mocha", price: "155 ₺", image: "images/ice-mocha.jpg" },
         { name: "Ice White Chocolate Mocha", price: "155 ₺", image: "images/ice-white-mocha.jpg" },
-        { name: "Ice Karamel Macchiato", price: "175 ₺", image: "images/ice-macchiato.jpg" }
+        { name: "Ice Karamel Macchiato", price: "175 ₺", image: "images/ice-macchiato.jpg" },
+        { name: "Ice Dubai Chocolate", price: "200 ₺", image: "images/ice-dubai.jpg" }
+    ],
+    "🍫 Sıcak Çikolata & Sahlep": [
+        { name: "Süt", price: "80 ₺", image: "images/sut.jpg" },
+        { name: "Ballı Süt", price: "100 ₺", image: "images/balli-sut.jpg" },
+        { name: "Muzlu Süt (Sıcak)", price: "100 ₺", image: "images/muzlu-sut-sicak.jpg" },
+        { name: "Muzlu Süt (Soğuk)", price: "110 ₺", image: "images/muzlu-sut-soguk.jpg" },
+        { name: "Sıcak Çikolata", price: "150 ₺", image: "images/sicak-cikolata.jpg" },
+        { name: "Beyaz Çikolata", price: "150 ₺", image: "images/beyaz-cikolata.jpg" },
+        { name: "Soğuk Çikolata", price: "150 ₺", image: "images/soguk-cikolata.jpg" },
+        { name: "Sahlep", price: "150 ₺", image: "images/sahlep.jpg" },
+        { name: "Aromalı Sıcak Çikolata", price: "175 ₺", image: "images/aromali-sicak-cikolata.jpg" }
+    ],
+    "🍵 Matcha Serisi": [
+        { name: "Mango Matcha", price: "160 ₺", image: "images/mango-matcha.jpg" },
+        { name: "Strawberry Matcha", price: "160 ₺", image: "images/strawberry-matcha.jpg" },
+        { name: "Ice Mango Matcha", price: "180 ₺", image: "images/ice-mango-matcha.jpg" },
+        { name: "Ice Strawberry Matcha", price: "180 ₺", image: "images/ice-strawberry-matcha.jpg" }
     ],
     "🍧 Frappe": [
         { name: "Çikolata Frappe", price: "170 ₺", image: "images/cikolata-frappe.jpg" },
@@ -495,7 +521,17 @@ const vedMenu = {
         { name: "Kivili Smoothie", price: "175 ₺", image: "images/kivi-smoothie.jpg" },
         { name: "Çilek Smoothie", price: "175 ₺", image: "images/cilek-smoothie.jpg" },
         { name: "Elmalı Smoothie", price: "175 ₺", image: "images/elma-smoothie.jpg" },
-        { name: "Mango Çarkıfelek Smoothie", price: "175 ₺", image: "images/mango-carkifelek.jpg" }
+        { name: "Mango Çarkıfelek Smoothie", price: "175 ₺", image: "images/mango-carkifelek.jpg" },
+        { name: "Orman Meyveli Smoothie", price: "175 ₺", image: "images/orman-meyveli-smoothie.jpg" }
+    ],
+    "🍹 Fruit Mix & Lime Çeşitleri": [
+        { name: "Mango Lime", price: "160 ₺", image: "images/mango-lime.jpg" },
+        { name: "Pineapple Lime", price: "160 ₺", image: "images/pineapple-lime.jpg" },
+        { name: "Blueberry Lime", price: "160 ₺", image: "images/blueberry-lime.jpg" },
+        { name: "Redberry Lime", price: "160 ₺", image: "images/redberry-lime.jpg" },
+        { name: "Şeftali Lime", price: "160 ₺", image: "images/seftali-lime.jpg" },
+        { name: "Strawberry Hibiscus", price: "160 ₺", image: "images/strawberry-hibiscus.jpg" },
+        { name: "Raspberry Açaí", price: "160 ₺", image: "images/raspberry-acai.jpg" }
     ],
     "🍹 Frozenler": [
         { name: "Yaban Mersini Frozen", price: "150 ₺", image: "images/yaban-mersini-frozen.jpg" },
@@ -539,8 +575,16 @@ const vedMenu = {
     "🍵 Çay ve Oraletler": [
         { name: "Çay", price: "50 ₺", image: "images/cay.jpg" },
         { name: "Tiryaki Çay", price: "50 ₺", image: "images/tiryaki-cay.jpg" },
-        { name: "Oralet Çeşitleri (Mevsimlik)", price: "60 ₺", image: "images/oralet.jpg" },
-        { name: "Kupa Çay", price: "80 ₺", image: "images/kupa-cay.jpg" }
+        { name: "Kupa Çay", price: "80 ₺", image: "images/kupa-cay.jpg" },
+        { name: "Çilek Oralet", price: "60 ₺", image: "images/cilek-oralet.jpg" },
+        { name: "Portakal Oralet", price: "60 ₺", image: "images/portakal-oralet.jpg" },
+        { name: "Kuşburnu Oralet", price: "60 ₺", image: "images/kusburnu-oralet.jpg" },
+        { name: "Kivi Oralet", price: "60 ₺", image: "images/kivi-oralet.jpg" },
+        { name: "Muz Oralet", price: "60 ₺", image: "images/muz-oralet.jpg" },
+        { name: "Karadut Oralet", price: "60 ₺", image: "images/karadut-oralet.jpg" },
+        { name: "Elma Oralet", price: "60 ₺", image: "images/elma-oralet.jpg" },
+        { name: "Nane Limon Oralet", price: "60 ₺", image: "images/nane-limon-oralet.jpg" },
+        { name: "Kakao Oralet", price: "60 ₺", image: "images/kakao-oralet.jpg" }
     ],
     "🍨 Dondurmalı Milkshake": [
         { name: "Karpuzlu Milkshake", price: "200 ₺", image: "images/karpuzlu-milkshake.jpg" },
@@ -562,13 +606,12 @@ const vedMenu = {
     ],
     "🧇 Waffle's": [
         { name: "Waffle", price: "300 ₺", image: "images/waffle.jpg" },
-        { name: "Dondurmalı Waffle", price: "375 ₺", image: "images/dondurmali-waffle.jpg" },
         { name: "Double Wafflee", price: "450 ₺", image: "images/double-waffle.jpg" }
     ],
     "💨 Nargile": [
         { name: "Köz Değişimi", price: "100 ₺", image: "images/koz-degisimi.jpg" },
         { name: "Lüle Değişimi", price: "200 ₺", image: "images/lule-degisimi.jpg" },
-        { name: "Nargile (Standart)", price: "450 ₺", image: "images/nargile.jpg" },
+        { name: "Nargile (Standart)", price: "400 ₺", image: "images/nargile.jpg" },
         { name: "Anason / Capiçino / Üzüm", price: "450 ₺", image: "images/anason-nargile.jpg" },
         { name: "Mix Nargile", price: "450 ₺", image: "images/mix-nargile.jpg" },
         { name: "Manterra Dark Tütün", price: "550 ₺", image: "images/manterra-dark.jpg" }
@@ -583,7 +626,7 @@ function renderAccordionMenu() {
     for (const category in vedMenu) {
         const btn = document.createElement('button');
         btn.className = 'category-accordion';
-        if (category.includes("Specials")) {
+        if (category.includes("Specials") || category.includes("Günün Menüsü")) {
             btn.classList.add('special-accordion');
         }
         btn.innerHTML = `<span>${category}</span><span class="accordion-arrow">▼</span>`;
