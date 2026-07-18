@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ved's Cafe - Menyu</title>
+    <style>
+        /* ==================== ÜMUMİ VƏ ARXA FON AYARLARI ==================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f5ebe6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            background-color: #1a0f0a;
+        }
+
+        /* Telefonda şəklin qüsursuz çıxması üçün yeni mobil-dostu fon strukturu */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(26, 15, 10, 0.92), rgba(26, 15, 10, 0.92)), 
+                        url('fon.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* ==================== GİRİŞ EKRANI ==================== */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* İçindəki elementləri yuxarı, orta və aşağı paylayır */
+            background: linear-gradient(to bottom, rgba(26, 15, 10, 0.88), rgba(26, 15, 10, 0.78)), 
+                        url('fon.jpg') no-repeat center center;
+            background-size: cover;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            padding: 40px 20px 20px 20px;
+            box-sizing: border-box;
+        }
+
+        .loaded #intro-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-content-wrapper {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+            margin-top: auto; /* Mərkəzləmə üçün */
+            margin-bottom: auto;
+        }
+
+        .logo-svg {
+            width: 280px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .text-letter {
+            font-family: 'Georgia', serif;
+            font-size: 70px;
+            font-weight: bold;
+            fill: none;
+            stroke: #d4a373;
+            stroke-width: 2;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawLetter 1.2s forwards ease-in-out;
+        }
+
+        .letter-s {
+            stroke: #ffb703;
+            animation: drawLetterSpecial 1.2s forwards ease-in-out;
+        }
+
+        .letter-v { animation-delay: 0.1s; }
+        .letter-e { animation-delay: 0.3s; }
+        .letter-d { animation-delay: 0.5s; }
+        .letter-s { animation-delay: 0.7s; }
+
+        @keyframes drawLetter {
+            to { stroke-dashoffset: 0; fill: #d4a373; }
+        }
+        @keyframes drawLetterSpecial {
+            to { stroke-dashoffset: 0; fill: #ffb703; }
+        }
+
+        .welcome-text {
+            color: #f5ebe6;
+            font-size: 1.25rem;
+            letter-spacing: 4px;
+            margin-top: 15px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+            opacity: 0;
+            animation: fadeInText 1s forwards ease-in-out 1.2s;
+        }
+
+        @keyframes fadeInText {
+            to { opacity: 0.95; }
+        }
+
+        .lang-select-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInText 1s forwards ease-in-out 1.5s;
+        }
+
+        .lang-btn {
+            background-color: rgba(44, 26, 17, 0.75);
+            border: 1px solid rgba(212, 163, 115, 0.35);
+            color: #f5ebe6;
+            padding: 12px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            border-color: #ffb703;
+            background-color: rgba(56, 33, 21, 0.9);
+            color: #ffb703;
+            box-shadow: 0 0 12px rgba(255,183,3,0.25);
+        }
+
+        .go-menu-btn {
+            background-color: #643c28;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fadeInText 1s forwards ease-in-out 1.7s;
+        }
+
+        .go-menu-btn:hover {
+            background-color: #7a4a31;
+            transform: scale(1.02);
+        }
+
+        /* ==================== SƏNİN İMZAN (POWERED BY AYKHAN) ==================== */
+        .credits-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin-top: auto; /* Tam olaraq ən aşağıya sıxışdırır */
+            padding-bottom: 10px;
+            opacity: 0;
+            animation: fadeInText 1s forwards ease-in-out 1.9s;
+        }
+
+        .credits-text {
+            font-size: 0.75rem;
+            color: rgba(245, 235, 230, 0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .credits-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .star-icon {
+            width: 22px;
+            height: 22px;
+            fill: #ffb703; /* Göndərdiyin ulduz loqosunun vektor versiyası */
+        }
+
+        .brand-name {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #f5ebe6;
+            letter-spacing: 1.5px;
+        }
+
+        /* ==================== ƏSAS YIĞCAM MENYU STİLLƏRİ ==================== */
+        .menu-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .loaded .menu-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-accordion {
+            background-color: rgba(44, 26, 17, 0.85);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            color: #d4a373;
+            width: 100%;
+            padding: 18px 20px;
+            margin-top: 12px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1.15rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .category-accordion:hover {
+            background-color: rgba(56, 33, 21, 0.95);
+            border-color: #d4a373;
+        }
+
+        .special-accordion {
+            border: 1px solid #ffb703;
+            color: #ffb703;
+            background-color: rgba(56, 33, 21, 0.85);
+            box-shadow: 0 0 10px rgba(255,183,3,0.1);
+        }
+        .special-accordion:hover {
+            background-color: rgba(71, 43, 27, 0.95);
+        }
+
+        .accordion-arrow {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: rgba(245, 235, 230, 0.6);
+        }
+        .active .accordion-arrow {
+            transform: rotate(180deg);
+            color: #ffb703;
+        }
+
+        .accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: rgba(26, 15, 10, 0.65);
+            border-radius: 0 0 8px 8px;
+            backdrop-filter: blur(3px);
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px 10px 10px 10px;
+        }
+
+        .menu-item {
+            background-color: rgba(35, 21, 14, 0.75);
+            border: 1px solid rgba(212, 163, 115, 0.1);
+            border-radius: 6px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .special-item {
+            border-left: 3px solid #ffb703;
+            background-color: rgba(56, 33, 21, 0.8);
+        }
+        .item-details {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .item-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 6px;
+            object-fit: cover;
+            background-color: #3d2519;
+        }
+        .item-name {
+            font-weight: bold;
+            font-size: 1rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+        .item-price {
+            color: #faedcd;
+            font-weight: bold;
+            font-size: 1rem;
+            white-space: nowrap;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+
+<!-- GİRİŞ EKRANI -->
+<div id="intro-overlay">
+    <!-- Loqo və Dil Seçimi Üçün Üst Kontyener -->
+    <div class="intro-content-wrapper">
+        <svg class="logo-svg" viewBox="0 0 320 100">
+            <text x="10" y="75" class="text-letter letter-v">V</text>
+            <text x="70" y="75" class="text-letter letter-e">E</text>
+            <text x="125" y="75" class="text-letter letter-d">D</text>
+            <text x="180" y="50" class="text-letter letter-v" style="font-size: 40px;">'</text>
+            <text x="210" y="75" class="text-letter letter-s">S</text>
+        </svg>
+        
+        <div class="welcome-text" id="welcome-label">Hoş Geldiniz</div>
+        
+        <div class="lang-select-container">
+            <button class="lang-btn active" onclick="selectLanguage('tr', this)">🇹🇷 Türkçe</button>
+            <button class="lang-btn" onclick="selectLanguage('en', this)">🇬🇧 English</button>
+            <button class="lang-btn" onclick="selectLanguage('az', this)">🇦🇿 Azərbaycanca</button>
+            <button class="lang-btn" onclick="selectLanguage('ru', this)">🇷🇺 Русский</button>
+        </div>
+        
+        <button class="go-menu-btn" id="go-menu-text" onclick="enterSite()">Menüye Gidin</button>
+    </div>
+
+    <!-- YENİ: SƏNİN LOGON VƏ İMZAN (TAM AŞAĞIDA) -->
+    <div class="credits-container">
+        <div class="credits-text">Powered by</div>
+        <div class="credits-brand">
+            <!-- Göndərdiyiniz kompas/külək ulduzunun mükəmməl çəkilmiş SVG-si -->
+            <svg class="star-icon" viewBox="0 0 100 100">
+                <!-- Əsas böyük şaquli şüalar -->
+                <polygon points="50,5 50,50 63,50" fill="#ffb703"/>
+                <polygon points="50,5 50,50 37,50" fill="#cca300"/>
+                <polygon points="50,95 50,50 37,50" fill="#ffb703"/>
+                <polygon points="50,95 50,50 63,50" fill="#cca300"/>
+                <!-- Əsas böyük üfüqi şüalar -->
+                <polygon points="95,50 50,50 50,63" fill="#ffb703"/>
+                <polygon points="95,50 50,50 50,37" fill="#cca300"/>
+                <polygon points,="5,50 50,50 50,37" fill="#ffb703"/>
+                <polygon points="5,50 50,50 50,63" fill="#cca300"/>
+                <!-- Çapraz kiçik şüalar -->
+                <polygon points="80,20 50,50 63,50" fill="#ffb703"/>
+                <polygon points="80,20 50,50 50,37" fill="#cca300"/>
+                <polygon points="20,80 50,50 37,50" fill="#ffb703"/>
+                <polygon points="20,80 50,50 50,63" fill="#cca300"/>
+                <polygon points="80,80 50,50 50,63" fill="#ffb703"/>
+                <polygon points="80,80 50,50 63,50" fill="#cca300"/>
+                <polygon points="20,20 50,50 50,37" fill="#ffb703"/>
+                <polygon points="20,20 50,50 37,50" fill="#cca300"/>
+            </svg>
+            <div class="brand-name">Aykhan</div>
+        </div>
+    </div>
+</div>
+
+<!-- ƏSAS YIĞCAM MENYU -->
+<div class="menu-container">
+    <h1 style="text-align: center; color: #d4a373; letter-spacing: 3px; margin-bottom: 25px; text-shadow: 0 3px 6px rgba(0,0,0,0.9);">VED CAFE</h1>
+    <div id="menu-accordion-output"></div>
+</div>
+
+<script>
+const translations = {
+    welcome: { tr: "Hoş Geldiniz", en: "Welcome", az: "Xoş Gəlmisiniz", ru: "Добро пожаловать" },
+    button: { tr: "Menüye Gidin", en: "Go to Menu", az: "Menyuya Keçid", ru: "Перейти к меню" }
+};
+
+let currentLang = 'tr';
+
+function selectLanguage(lang, element) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+    document.getElementById('welcome-label').innerText = translations.welcome[lang];
+    document.getElementById('go-menu-text').innerText = translations.button[lang];
+    renderAccordionMenu();
+}
+
+function enterSite() {
+    document.body.classList.add('loaded');
+}
+
+const vedMenu = {
+    "✨ Ved's Specials": [
+        { name: "Ved's Limonata", price: "175 ₺", image: "images/veds-limonata.jpg", isSpecial: true },
+        { name: "Dondurma", price: "Fiyat Belirtilmedi", image: "images/dondurma.jpg", isSpecial: true },
+        { name: "Affogato", price: "Fiyat Belirtilmedi", image: "images/affogato.jpg", isSpecial: true }
+    ],
+    "🥪 Tostlar & Dürümler (Wrap)": [
+        { name: "Sucuklu Tost", price: "150 ₺", image: "images/sucuklu-tost.jpg" },
+        { name: "Yumurta Kaşar Tost", price: "175 ₺", image: "images/yumurta-kasar.jpg" },
+        { name: "Kaşarlı Tost", price: "175 ₺", image: "images/kasarli-tost.jpg" },
+        { name: "Karışık Tost", price: "200 ₺", image: "images/karisik-tost.jpg" },
+        { name: "Tavuklu Wrap", price: "225 ₺", image: "images/tavuklu-wrap.jpg" },
+        { name: "Duble Tost", price: "225 ₺", image: "images/duble-tost.jpg" },
+        { name: "Atom Tost", price: "250 ₺", image: "images/atom-tost.jpg" }
+    ],
+    "🍝 Makarnalar": [
+        { name: "Kremalı Makarna", price: "200 ₺", image: "images/kremali-makarna.jpg" },
+        { name: "Mantarlı Kremalı Makarna", price: "225 ₺", image: "images/mantarli-kremali.jpg" },
+        { name: "Tavuklu Kremalı Makarna", price: "225 ₺", image: "images/tavuklu-kremali.jpg" },
+        { name: "Kremalı Tavuklu Mantarlı Makarna", price: "250 ₺", image: "images/kremali-tavuklu-mantarli.jpg" },
+        { name: "Körili Tavuklu Makarna", price: "250 ₺", image: "images/korili-tavuklu.jpg" },
+        { name: "Körili Tavuklu Mantarlı Makarna", price: "275 ₺", image: "images/korili-tavuklu-mantarli.jpg" }
+    ],
+    "🍟 Atıştırmalıklar": [
+        { name: "Patates Kızartması", price: "150 ₺", image: "images/patates-kizartmasi.jpg" },
+        { name: "Ved's Full Karışık Sepet", price: "225 ₺", image: "images/veds-sepet.jpg" }
+    ],
+    "☕ Kahve Çochemileri (Türk Kahveleri)": [
+        { name: "Türk Kahvesi", price: "100 ₺", image: "images/turk-kahvesi.jpg" },
+        { name: "Menengiç Kahvesi", price: "100 ₺", image: "images/menengic.jpg" },
+        { name: "Damla Sakızlı Türk Kahvesi", price: "100 ₺", image: "images/damla-sakizli.jpg" },
+        { name: "Çikolatalı Türk Kahvesi", price: "100 ₺", image: "images/cikolatali-turk.jpg" },
+        { name: "Sütlü Türk Kahvesi", price: "125 ₺", image: "images/sutlu-turk.jpg" },
+        { name: "Duble Türk Kahvesi", price: "125 ₺", image: "images/duble-turk.jpg" },
+        { name: "Duble Çikolata Türk Kahvesi", price: "125 ₺", image: "images/duble-cikolata.jpg" },
+        { name: "Duble Menengiç Kahvesi", price: "125 ₺", image: "images/duble-menengic.jpg" },
+        { name: "Duble Damla Sakızlı Türk Kahvesi", price: "125 ₺", image: "images/duble-damla.jpg" },
+        { name: "Duble Sütlü Türk Kahvesi", price: "125 ₺", image: "images/duble-sutlu.jpg" },
+        { name: "Süvari Türk Kahvesi", price: "125 ₺", image: "images/suvari.jpg" }
+    ],
+    "🌍 Dünya Kahveleri (Sıcak)": [
+        { name: "Expresso Shot", price: "50 ₺", image: "images/espresso-shot.jpg" },
+        { name: "Espresso Single", price: "70 ₺", image: "images/espresso-single.jpg" },
+        { name: "Single Espresso", price: "100 ₺", image: "images/single-espresso.jpg" },
+        { name: "Americano", price: "110 ₺", image: "images/americano.jpg" },
+        { name: "Espresso Double", price: "125 ₺", image: "images/espresso-double.jpg" },
+        { name: "Sütlü Nescafe", price: "125 ₺", image: "images/sutlu-nescafe.jpg" },
+        { name: "Nescafe Gold", price: "125 ₺", image: "images/nescafe-gold.jpg" },
+        { name: "Filtre Kahve", price: "130 ₺", image: "images/filtre-kahve.jpg" },
+        { name: "Chai Tea Latte", price: "135 ₺", image: "images/chai-latte.jpg" },
+        { name: "Cafe Latte", price: "145 ₺", image: "images/cafe-latte.jpg" },
+        { name: "Aromalı Latte", price: "155 ₺", image: "images/aromali-latte.jpg" },
+        { name: "Karamel Latte", price: "155 ₺", image: "images/karamel-latte.jpg" },
+        { name: "Cafe Mocha", price: "155 ₺", image: "images/cafe-mocha.jpg" },
+        { name: "White Chocolate Mocha", price: "155 ₺", image: "images/white-mocha.jpg" },
+        { name: "Blue Chocolate Mocha", price: "155 ₺", image: "images/blue-mocha.jpg" },
+        { name: "Toffenut Mocha", price: "155 ₺", image: "images/toffenut-mocha.jpg" },
+        { name: "Rasberry White Mocha", price: "155 ₺", image: "images/raspberry-mocha.jpg" },
+        { name: "Cappucino", price: "165 ₺", image: "images/cappuccino.jpg" },
+        { name: "Flat White", price: "175 ₺", image: "images/flat-white.jpg" },
+        { name: "Caramel Macchiato", price: "175 ₺", image: "images/caramel-macchiato.jpg" }
+    ],
+    "🧊 Soğuk Kahveler": [
+        { name: "Ice Americano", price: "130 ₺", image: "images/ice-americano.jpg" },
+        { name: "Ice Filtre Kahve", price: "140 ₺", image: "images/ice-filtre.jpg" },
+        { name: "Ice Latte", price: "150 ₺", image: "images/ice-latte.jpg" },
+        { name: "Ice Vanilla Latte", price: "155 ₺", image: "images/ice-vanilla.jpg" },
+        { name: "Ice Karamel Latte", price: "155 ₺", image: "images/ice-karamel-latte.jpg" },
+        { name: "Ice Mocha", price: "155 ₺", image: "images/ice-mocha.jpg" },
+        { name: "Ice White Chocolate Mocha", price: "155 ₺", image: "images/ice-white-mocha.jpg" },
+        { name: "Ice Karamel Macchiato", price: "175 ₺", image: "images/ice-macchiato.jpg" }
+    ],
+    "🍧 Frappe": [
+        { name: "Çikolata Frappe", price: "170 ₺", image: "images/cikolata-frappe.jpg" },
+        { name: "Karamel Frappe", price: "170 ₺", image: "images/karamel-frappe.jpg" },
+        { name: "Toffenut Frappe", price: "170 ₺", image: "images/toffenut-frappe.jpg" },
+        { name: "Oreo Frappe", price: "180 ₺", image: "images/oreo-frappe.jpg" }
+    ],
+    "🧋 Smoothieler": [
+        { name: "Şeftalili Smoothie", price: "175 ₺", image: "images/seftali-smoothie.jpg" },
+        { name: "Kivili Smoothie", price: "175 ₺", image: "images/kivi-smoothie.jpg" },
+        { name: "Çilek Smoothie", price: "175 ₺", image: "images/cilek-smoothie.jpg" },
+        { name: "Elmalı Smoothie", price: "175 ₺", image: "images/elma-smoothie.jpg" },
+        { name: "Mango Çarkıfelek Smoothie", price: "175 ₺", image: "images/mango-carkifelek.jpg" }
+    ],
+    "🍹 Frozenler": [
+        { name: "Yaban Mersini Frozen", price: "150 ₺", image: "images/yaban-mersini-frozen.jpg" },
+        { name: "Yeşil Elma Frozen", price: "175 ₺", image: "images/yesil-elma-frozen.jpg" },
+        { name: "Mango Frozen", price: "175 ₺", image: "images/mango-frozen.jpg" },
+        { name: "Şeftalili Frozen", price: "175 ₺", image: "images/seftali-frozen.jpg" },
+        { name: "Karpuz Frozen", price: "175 ₺", image: "images/karpuz-frozen.jpg" },
+        { name: "Ananas Frozen", price: "175 ₺", image: "images/ananas-frozen.jpg" },
+        { name: "Çilekli Frozen", price: "175 ₺", image: "images/cilek-frozen.jpg" },
+        { name: "Çarkıfelek Frozen", price: "175 ₺", image: "images/carkifelek-frozen.jpg" },
+        { name: "Orman Meyveli Frozen", price: "175 ₺", image: "images/orman-meyveli-frozen.jpg" },
+        { name: "Kavun Frozen", price: "175 ₺", image: "images/kavun-frozen.jpg" },
+        { name: "Kivili Frozen", price: "175 ₺", image: "images/kivi-frozen.jpg" },
+        { name: "Frambuazlı Frozen", price: "175 ₺", image: "images/frambuaz-frozen.jpg" }
+    ],
+    "🍋 Limonatalar": [
+        { name: "Sade Limonata", price: "125 ₺", image: "images/sade-limonata.jpg" },
+        { name: "Çilekli Limonata", price: "150 ₺", image: "images/cilekli-limonata.jpg" },
+        { name: "Naneli Limonata", price: "150 ₺", image: "images/naneli-limonata.jpg" },
+        { name: "Elmalı Limonata", price: "150 ₺", image: "images/elmali-limonata.jpg" },
+        { name: "Çarkıfelekli Limonata", price: "150 ₺", image: "images/carkifelekli-limonata.jpg" },
+        { name: "Orman Meyveli Limonata", price: "150 ₺", image: "images/orman-meyveli-limonata.jpg" }
+    ],
+    "🫖 Şifa ve Bitki Çayları": [
+        { name: "Melisa Çayı", price: "120 ₺", image: "images/melisa-cayi.jpg" },
+        { name: "Sessizlik Çayı", price: "120 ₺", image: "images/sessizlik-cayi.jpg" },
+        { name: "Nane Limon Çayı", price: "120 ₺", image: "images/nane-limon.jpg" },
+        { name: "Ihlamur Çayı", price: "120 ₺", image: "images/ihlamur.jpg" },
+        { name: "Papatya Çayı", price: "120 ₺", image: "images/papatya.jpg" },
+        { name: "Ada Çayı", price: "120 ₺", image: "images/ada-cayi.jpg" },
+        { name: "Yeşil Çay", price: "120 ₺", image: "images/yesil-cay.jpg" },
+        { name: "Kekik Çayı", price: "120 ₺", image: "images/kekik-cayi.jpg" },
+        { name: "Kış Çayı", price: "120 ₺", image: "images/kis-cayi.jpg" },
+        { name: "Blue Flower Tea", price: "145 ₺", image: "images/blue-flower.jpg" },
+        { name: "Hibiscus Lemonade Tea", price: "145 ₺", image: "images/hibiscus-tea.jpg" },
+        { name: "Carnaval Tea", price: "145 ₺", image: "images/carnaval-tea.jpg" },
+        { name: "Winter Dream", price: "145 ₺", image: "images/winter-dream.jpg" },
+        { name: "Raspberry Punch Tea", price: "145 ₺", image: "images/raspberry-punch.jpg" },
+        { name: "Extra Bal", price: "35 ₺", image: "images/bal.jpg" }
+    ],
+    "🍵 Çay ve Oraletler": [
+        { name: "Çay", price: "50 ₺", image: "images/cay.jpg" },
+        { name: "Tiryaki Çay", price: "50 ₺", image: "images/tiryaki-cay.jpg" },
+        { name: "Oralet Çeşitleri (Mevsimlik)", price: "60 ₺", image: "images/oralet.jpg" },
+        { name: "Kupa Çay", price: "80 ₺", image: "images/kupa-cay.jpg" }
+    ],
+    "🍨 Dondurmalı Milkshake": [
+        { name: "Karpuzlu Milkshake", price: "200 ₺", image: "images/karpuzlu-milkshake.jpg" },
+        { name: "Çarkıfelek Milkshake", price: "200 ₺", image: "images/carkifelek-milkshake.jpg" },
+        { name: "Mango Milkshake", price: "200 ₺", image: "images/mango-milkshake.jpg" },
+        { name: "Kavunlu Milkshake", price: "200 ₺", image: "images/kavunlu-milkshake.jpg" },
+        { name: "Lotus Milkshake", price: "150 ₺", image: "images/lotus-milkshake.jpg" },
+        { name: "Orman Meyveli Milkshake", price: "200 ₺", image: "images/orman-meyveli-milkshake.jpg" },
+        { name: "Vanilyalı Milkshake", price: "200 ₺", image: "images/vanilyali-milkshake.jpg" },
+        { name: "Karamelli Milkshake", price: "200 ₺", image: "images/karamelli-milkshake.jpg" },
+        { name: "Çikolata Milkshake", price: "200 ₺", image: "images/cikolata-milkshake.jpg" },
+        { name: "Çilekli Milkshake", price: "200 ₺", image: "images/cilekli-milkshake.jpg" },
+        { name: "Kivili Milkshake", price: "200 ₺", image: "images/kivili-milkshake.jpg" },
+        { name: "Oreolu Milkshake", price: "250 ₺", image: "images/oreolu-milkshake.jpg" },
+        { name: "Muzlu Milkshake", price: "200 ₺", image: "images/muzlu-milkshake.jpg" },
+        { name: "Böğürtlen Milkshake", price: "200 ₺", image: "images/bogurtlen-milkshake.jpg" },
+        { name: "Şeftali Milkshake", price: "200 ₺", image: "images/seftali-milkshake.jpg" },
+        { name: "Hindistan Cevizli Milkshake", price: "200 ₺", image: "images/hindistan-cevizli-milkshake.jpg" }
+    ],
+    "🧇 Waffle's": [
+        { name: "Waffle", price: "300 ₺", image: "images/waffle.jpg" },
+        { name: "Dondurmalı Waffle", price: "375 ₺", image: "images/dondurmali-waffle.jpg" },
+        { name: "Double Wafflee", price: "450 ₺", image: "images/double-waffle.jpg" }
+    ],
+    "💨 Nargile": [
+        { name: "Köz Değişimi", price: "100 ₺", image: "images/koz-degisimi.jpg" },
+        { name: "Lüle Değişimi", price: "200 ₺", image: "images/lule-degisimi.jpg" },
+        { name: "Nargile (Standart)", price: "450 ₺", image: "images/nargile.jpg" },
+        { name: "Anason / Capiçino / Üzüm", price: "450 ₺", image: "images/anason-nargile.jpg" },
+        { name: "Mix Nargile", price: "450 ₺", image: "images/mix-nargile.jpg" },
+        { name: "Manterra Dark Tütün", price: "550 ₺", image: "images/manterra-dark.jpg" }
+    ]
+};
+
+const accordionOutput = document.getElementById('menu-accordion-output');
+
+function renderAccordionMenu() {
+    accordionOutput.innerHTML = ""; 
+
+    for (const category in vedMenu) {
+        const btn = document.createElement('button');
+        btn.className = 'category-accordion';
+        if (category.includes("Specials")) {
+            btn.classList.add('special-accordion');
+        }
+        btn.innerHTML = `<span>${category}</span><span class="accordion-arrow">▼</span>`;
+
+        const panel = document.createElement('div');
+        panel.className = 'accordion-panel';
+
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'menu-grid';
+
+        vedMenu[category].forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = item.isSpecial ? 'menu-item special-item' : 'menu-item';
+            
+            itemDiv.innerHTML = `
+                <div class="item-details">
+                    <img src="${item.image}" alt="${item.name}" class="item-img" onerror="this.style.display='none'">
+                    <span class="item-name">${item.name}</span>
+                </div>
+                <span class="item-price">${item.price}</span>
+            `;
+            gridDiv.appendChild(itemDiv);
+        });
+
+        panel.appendChild(gridDiv);
+        accordionOutput.appendChild(btn);
+        accordionOutput.appendChild(panel);
+
+        btn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            
+            document.querySelectorAll('.category-accordion').forEach(otherBtn => {
+                if (otherBtn !== this && otherBtn.classList.contains('active')) {
+                    otherBtn.classList.remove('active');
+                    otherBtn.nextElementSibling.style.maxHeight = null;
+                }
+            });
+
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    renderAccordionMenu();
+});
+</script>
+
+</body>
+</html>
