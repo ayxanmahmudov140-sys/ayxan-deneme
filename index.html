@@ -25,7 +25,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(to bottom, rgba(26, 15, 10, 0.92), rgba(26, 15, 10, 0.92)), 
+            background: linear-gradient(to bottom, rgba(26, 15, 10, 0.94), rgba(26, 15, 10, 0.94)), 
                         url('fon.jpg') no-repeat center center;
             background-size: cover;
         }
@@ -173,7 +173,6 @@
             transform: scale(1.02);
         }
 
-        /* ==================== AYKHAN LOGO & İMZA ==================== */
         .credits-container {
             display: flex;
             flex-direction: column;
@@ -212,11 +211,73 @@
             letter-spacing: 1.5px;
         }
 
+        /* ==================== PEŞƏKAR VİDEO BAŞLIQ (HERO) BÖLMƏSİ ==================== */
+        .video-hero-container {
+            position: relative;
+            width: 100%;
+            height: 65vh; /* Ekranın 65%-ni tutur, çox boğmasın deyə */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .video-hero-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Videonun üstünə tünd lüks filtr qoyuruq ki mətn rahat oxunsun */
+        .video-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 15, 10, 0.4), rgba(26, 15, 10, 0.85));
+            z-index: 2;
+        }
+
+        .video-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .video-hero-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            color: #ffb703;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .video-hero-subtitle {
+            font-size: 1rem;
+            color: #f5ebe6;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+        }
+
         /* ==================== ƏSAS YIĞCAM MENYU STİLLƏRİ ==================== */
         .menu-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px 60px 20px;
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -329,7 +390,6 @@
 </head>
 <body>
 
-<!-- GİRİŞ EKRANI -->
 <div id="intro-overlay">
     <div class="intro-content-wrapper">
         <svg class="logo-svg" viewBox="0 0 320 100">
@@ -378,16 +438,27 @@
     </div>
 </div>
 
-<!-- ƏSAS YIĞCAM MENYU -->
+<div class="video-hero-container">
+    <video class="video-hero-bg" autoplay loop muted playsinline>
+        <source src="images/yeni-urunler.mp4" type="video/mp4">
+    </video>
+    <div class="video-hero-overlay"></div>
+    <div class="video-hero-content">
+        <h2 class="video-hero-title" id="hero-title-text">Yeni Ürünlerimiz</h2>
+        <div class="video-hero-subtitle" id="hero-subtitle-text">Keşfetmeye Başlayın</div>
+    </div>
+</div>
+
 <div class="menu-container">
-    <h1 style="text-align: center; color: #d4a373; letter-spacing: 3px; margin-bottom: 25px; text-shadow: 0 3px 6px rgba(0,0,0,0.9);">VED CAFE</h1>
     <div id="menu-accordion-output"></div>
 </div>
 
 <script>
 const translations = {
     welcome: { tr: "Hoş Geldiniz", en: "Welcome", az: "Xoş Gəlmisiniz", ru: "Добро пожаловать" },
-    button: { tr: "Menüye Gidin", en: "Go to Menu", az: "Menyuya Keçid", ru: "Перейти k menu" }
+    button: { tr: "Menüye Gidin", en: "Go to Menu", az: "Menyuya Keçid", ru: "Перейти к меню" },
+    heroTitle: { tr: "Yeni Ürünlerimiz", en: "Our New Products", az: "Yeni Məhsullarımız", ru: "Наши Новинки" },
+    heroSubtitle: { tr: "Keşfetmeye Başlayın", en: "Start Exploring", az: "Kəşf Etməyə Başlayın", ru: "Начните исследовать" }
 };
 
 let currentLang = 'tr';
@@ -396,8 +467,13 @@ function selectLanguage(lang, element) {
     currentLang = lang;
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     element.classList.add('active');
+    
+    // Mətnləri tərcümə etmək
     document.getElementById('welcome-label').innerText = translations.welcome[lang];
     document.getElementById('go-menu-text').innerText = translations.button[lang];
+    document.getElementById('hero-title-text').innerText = translations.heroTitle[lang];
+    document.getElementById('hero-subtitle-text').innerText = translations.heroSubtitle[lang];
+    
     renderAccordionMenu();
 }
 
@@ -525,8 +601,8 @@ const vedMenu = {
         { name: "Orman Meyveli Smoothie", price: "175 ₺", image: "images/orman-meyveli-smoothie.jpg" }
     ],
     "🍹 Fruit Mix & Lime Çeşitleri": [
-        { name: "Mojito", price: "130 ₺", image: "images/mojito.jpg" },
-        { name: "Tropical Mojito", price: "170 ₺", image: "images/tropical-mojito.jpg" },
+        { name: "Mojito", price: "160 ₺", image: "images/mojito.jpg" },
+        { name: "Tropical Mojito", price: "160 ₺", image: "images/tropical-mojito.jpg" },
         { name: "Mango Lime", price: "160 ₺", image: "images/mango-lime.jpg" },
         { name: "Pineapple Lime", price: "160 ₺", image: "images/pineapple-lime.jpg" },
         { name: "Blueberry Lime", price: "160 ₺", image: "images/blueberry-lime.jpg" },
