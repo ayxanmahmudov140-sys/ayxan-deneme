@@ -215,7 +215,7 @@
         .video-hero-container {
             position: relative;
             width: 100%;
-            height: 65vh; /* Ekranın 65%-ni tutur, çox boğmasın deyə */
+            height: 65vh;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -236,7 +236,6 @@
             z-index: 1;
         }
 
-        /* Videonun üstünə tünd lüks filtr qoyuruq ki mətn rahat oxunsun */
         .video-hero-overlay {
             position: absolute;
             top: 0;
@@ -440,7 +439,8 @@
 
 <div class="video-hero-container">
     <video class="video-hero-bg" autoplay loop muted playsinline>
-        <source src="images/yeni-urunler.mp4" type="video/mp4">
+        <source src="mojito.mp4" type="video/mp4">
+        <source src="mojito" type="video/mp4">
     </video>
     <div class="video-hero-overlay"></div>
     <div class="video-hero-content">
@@ -468,7 +468,6 @@ function selectLanguage(lang, element) {
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     element.classList.add('active');
     
-    // Mətnləri tərcümə etmək
     document.getElementById('welcome-label').innerText = translations.welcome[lang];
     document.getElementById('go-menu-text').innerText = translations.button[lang];
     document.getElementById('hero-title-text').innerText = translations.heroTitle[lang];
