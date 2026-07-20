@@ -85,11 +85,6 @@
             animation: drawLetter 1.2s forwards ease-in-out;
         }
 
-        .letter-s {
-            stroke: #ffb703;
-            animation: drawLetterSpecial 1.2s forwards ease-in-out;
-        }
-
         .letter-v { animation-delay: 0.1s; }
         .letter-e { animation-delay: 0.3s; }
         .letter-d { animation-delay: 0.5s; }
@@ -97,9 +92,6 @@
 
         @keyframes drawLetter {
             to { stroke-dashoffset: 0; fill: #d4a373; }
-        }
-        @keyframes drawLetterSpecial {
-            to { stroke-dashoffset: 0; fill: #ffb703; }
         }
 
         .welcome-text {
@@ -146,10 +138,10 @@
         }
 
         .lang-btn:hover, .lang-btn.active {
-            border-color: #ffb703;
+            border-color: #d4a373;
             background-color: rgba(56, 33, 21, 0.9);
-            color: #ffb703;
-            box-shadow: 0 0 12px rgba(255,183,3,0.25);
+            color: #d4a373;
+            box-shadow: 0 0 12px rgba(212,163,115,0.25);
         }
 
         .go-menu-btn {
@@ -200,7 +192,7 @@
         .star-icon {
             width: 22px;
             height: 22px;
-            fill: #ffb703;
+            fill: #d4a373;
         }
 
         .brand-name {
@@ -211,7 +203,7 @@
             letter-spacing: 1.5px;
         }
 
-        /* ==================== PEŞƏKAR VİDEO BAŞLIQ (HERO) BÖLMƏSİ ==================== */
+        /* ==================== VİDEO BAŞLIQ BÖLMƏSİ ==================== */
         .video-hero-container {
             position: relative;
             width: 100%;
@@ -256,7 +248,7 @@
         .video-hero-title {
             font-family: 'Georgia', serif;
             font-size: 2.2rem;
-            color: #ffb703;
+            color: #d4a373;
             margin: 0 0 10px 0;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -312,10 +304,10 @@
         }
 
         .special-accordion {
-            border: 1px solid #ffb703;
-            color: #ffb703;
+            border: 1px solid #d4a373;
+            color: #d4a373;
             background-color: rgba(56, 33, 21, 0.85);
-            box-shadow: 0 0 10px rgba(255,183,3,0.1);
+            box-shadow: 0 0 10px rgba(212,163,115,0.1);
         }
         .special-accordion:hover {
             background-color: rgba(71, 43, 27, 0.95);
@@ -328,7 +320,7 @@
         }
         .active .accordion-arrow {
             transform: rotate(180deg);
-            color: #ffb703;
+            color: #d4a373;
         }
 
         .accordion-panel {
@@ -347,37 +339,61 @@
             padding: 15px 10px 10px 10px;
         }
 
-        .menu-item {
+        /* ==================== MENYU ELEMENTLƏRİ VƏ BÖYÜK ŞƏKİL STRUKTURU ==================== */
+        .menu-item-wrapper {
+            display: flex;
+            flex-direction: column;
             background-color: rgba(35, 21, 14, 0.75);
             border: 1px solid rgba(212, 163, 115, 0.1);
             border-radius: 6px;
-            padding: 12px 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item-wrapper.special-item {
+            border-left: 3px solid #d4a373;
+            background-color: rgba(56, 33, 21, 0.8);
+        }
+
+        .menu-item {
+            padding: 14px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            cursor: pointer;
+            user-select: none;
         }
-        .special-item {
-            border-left: 3px solid #ffb703;
-            background-color: rgba(56, 33, 21, 0.8);
-        }
+
         .item-details {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+        
         .item-img {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 6px;
             object-fit: cover;
             background-color: #3d2519;
         }
+        
         .item-name {
             font-weight: bold;
             font-size: 1rem;
             text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
+
+        .item-price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .item-price {
             color: #faedcd;
             font-weight: bold;
@@ -385,10 +401,38 @@
             white-space: nowrap;
             text-shadow: 0 1px 2px rgba(0,0,0,0.8);
         }
+
+        .item-dropdown-icon {
+            font-size: 0.75rem;
+            color: #d4a373;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item-wrapper.expanded .item-dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Böyük Şəkil Paneli */
+        .large-image-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(20, 11, 7, 0.5);
+        }
+
+        .large-product-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-top: 1px solid rgba(212, 163, 115, 0.1);
+        }
     </style>
 </head>
 <body>
 
+<!-- GİRİŞ EKRANI -->
 <div id="intro-overlay">
     <div class="intro-content-wrapper">
         <svg class="logo-svg" viewBox="0 0 320 100">
@@ -415,28 +459,29 @@
         <div class="credits-text">Powered by</div>
         <div class="credits-brand">
             <svg class="star-icon" viewBox="0 0 100 100">
-                <polygon points="50,5 50,50 63,50" fill="#ffb703"/>
-                <polygon points="50,5 50,50 37,50" fill="#cca300"/>
-                <polygon points="50,95 50,50 37,50" fill="#ffb703"/>
-                <polygon points="50,95 50,50 63,50" fill="#cca300"/>
-                <polygon points="95,50 50,50 50,63" fill="#ffb703"/>
-                <polygon points="95,50 50,50 50,37" fill="#cca300"/>
-                <polygon points="5,50 50,50 50,37" fill="#ffb703"/>
-                <polygon points="5,50 50,50 50,63" fill="#cca300"/>
-                <polygon points="80,20 50,50 63,50" fill="#ffb703"/>
-                <polygon points="80,20 50,50 50,37" fill="#cca300"/>
-                <polygon points="20,80 50,50 37,50" fill="#ffb703"/>
-                <polygon points="20,80 50,50 50,63" fill="#cca300"/>
-                <polygon points="80,80 50,50 50,63" fill="#ffb703"/>
-                <polygon points="80,80 50,50 63,50" fill="#cca300"/>
-                <polygon points="20,20 50,50 50,37" fill="#ffb703"/>
-                <polygon points="20,20 50,50 37,50" fill="#cca300"/>
+                <polygon points="50,5 50,50 63,50" fill="#d4a373"/>
+                <polygon points="50,5 50,50 37,50" fill="#aa7c52"/>
+                <polygon points="50,95 50,50 37,50" fill="#d4a373"/>
+                <polygon points="50,95 50,50 63,50" fill="#aa7c52"/>
+                <polygon points="95,50 50,50 50,63" fill="#d4a373"/>
+                <polygon points="95,50 50,50 50,37" fill="#aa7c52"/>
+                <polygon points="5,50 50,50 50,37" fill="#d4a373"/>
+                <polygon points="5,50 50,50 50,63" fill="#aa7c52"/>
+                <polygon points="80,20 50,50 63,50" fill="#d4a373"/>
+                <polygon points="80,20 50,50 50,37" fill="#aa7c52"/>
+                <polygon points="20,80 50,50 37,50" fill="#d4a373"/>
+                <polygon points="20,80 50,50 50,63" fill="#aa7c52"/>
+                <polygon points="80,80 50,50 50,63" fill="#d4a373"/>
+                <polygon points="80,80 50,50 63,50" fill="#aa7c52"/>
+                <polygon points="20,20 50,50 50,37" fill="#d4a373"/>
+                <polygon points="20,20 50,50 37,50" fill="#aa7c52"/>
             </svg>
             <div class="brand-name">Aykhan</div>
         </div>
     </div>
 </div>
 
+<!-- VİDEO BAŞLIQ BÖLMƏSİ -->
 <div class="video-hero-container">
     <video class="video-hero-bg" autoplay loop muted playsinline>
         <source src="mojito.mp4" type="video/mp4">
@@ -449,6 +494,7 @@
     </div>
 </div>
 
+<!-- ƏSAS YIĞCAM MENYU -->
 <div class="menu-container">
     <div id="menu-accordion-output"></div>
 </div>
@@ -481,6 +527,14 @@ function enterSite() {
 }
 
 const vedMenu = {
+   "🆕 Yeni Ürünler": [
+        { name: "Mojito", price: "150 ₺", image: "images/duzmojito.jpeg", hasLargeImage: true, isSpecial: true }, // ⚠️ Bu şəkil qovluqda YOXDUR!
+        { name: "Fresh Hindistan Cevizli Moctail", price: "200 ₺", image: "images/fresh-hindistan.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "Günbatımı Moctail", price: "200 ₺", image: "images/gunbatimi.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "Blue Moon Mokteyl", price: "200 ₺", image: "images/blue.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "Kav-İvi Special", price: "200 ₺", image: "images/kav-ivi.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "Orman Meyveli Mojito", price: "170 ₺", image: "images/ormanmojito.jpeg", hasLargeImage: true, isSpecial: true }
+    ],
     "☀️ Günün Menüsü (Ekonomi Paketler)": [
         { name: "Kurabiye", price: "150 ₺", image: "images/kurabiye.jpg" },
         { name: "Affogato", price: "150 ₺", image: "images/affogato.jpg" },
@@ -600,9 +654,6 @@ const vedMenu = {
         { name: "Orman Meyveli Smoothie", price: "175 ₺", image: "images/orman-meyveli-smoothie.jpg" }
     ],
     "🍹 Fruit Mix & Lime Çeşitleri": [
-        { name: "Mojito", price: "160 ₺", image: "images/mojito.jpg" },
-        { name: "Tropical Mojito", price: "160 ₺", image: "images/tropical-mojito.jpg" },
-        { name: "Mango Lime", price: "160 ₺", image: "images/mango-lime.jpg" },
         { name: "Pineapple Lime", price: "160 ₺", image: "images/pineapple-lime.jpg" },
         { name: "Blueberry Lime", price: "160 ₺", image: "images/blueberry-lime.jpg" },
         { name: "Redberry Lime", price: "160 ₺", image: "images/redberry-lime.jpg" },
@@ -703,7 +754,7 @@ function renderAccordionMenu() {
     for (const category in vedMenu) {
         const btn = document.createElement('button');
         btn.className = 'category-accordion';
-        if (category.includes("Specials") || category.includes("Günün Menüsü")) {
+        if (category.includes("Yeni Ürünler") || category.includes("Günün Menüsü") || category.includes("Specials")) {
             btn.classList.add('special-accordion');
         }
         btn.innerHTML = `<span>${category}</span><span class="accordion-arrow">▼</span>`;
@@ -714,18 +765,61 @@ function renderAccordionMenu() {
         const gridDiv = document.createElement('div');
         gridDiv.className = 'menu-grid';
 
-        vedMenu[category].forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = item.isSpecial ? 'menu-item special-item' : 'menu-item';
+        vedMenu[category].forEach((item, index) => {
+            const wrapperDiv = document.createElement('div');
+            wrapperDiv.className = item.isSpecial ? 'menu-item-wrapper special-item' : 'menu-item-wrapper';
             
-            itemDiv.innerHTML = `
-                <div class="item-details">
-                    <img src="${item.image}" alt="${item.name}" class="item-img" onerror="this.style.display='none'">
-                    <span class="item-name">${item.name}</span>
+            const dropdownArrowHTML = item.hasLargeImage ? `<span class="item-dropdown-icon">▼</span>` : '';
+            
+            wrapperDiv.innerHTML = `
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="${item.image}" alt="${item.name}" class="item-img" onerror="this.style.display='none'">
+                        <span class="item-name">${item.name}</span>
+                    </div>
+                    <div class="item-price-wrapper">
+                        <span class="item-price">${item.price}</span>
+                        ${dropdownArrowHTML}
+                    </div>
                 </div>
-                <span class="item-price">${item.price}</span>
+                ${item.hasLargeImage ? `
+                <div class="large-image-panel">
+                    <img src="${item.image}" alt="${item.name} Büyük" class="large-product-img">
+                </div>
+                ` : ''}
             `;
-            gridDiv.appendChild(itemDiv);
+            
+            if (item.hasLargeImage) {
+                const menuItemClickable = wrapperDiv.querySelector('.menu-item');
+                const imgPanel = wrapperDiv.querySelector('.large-image-panel');
+                
+                menuItemClickable.addEventListener('click', function(e) {
+                    const isExpanded = wrapperDiv.classList.contains('expanded');
+                    
+                    // Digər açıq şəkilləri bağla
+                    gridDiv.querySelectorAll('.menu-item-wrapper.expanded').forEach(otherWrapper => {
+                        if (otherWrapper !== wrapperDiv) {
+                            otherWrapper.classList.remove('expanded');
+                            otherWrapper.querySelector('.large-image-panel').style.maxHeight = null;
+                        }
+                    });
+                    
+                    if (isExpanded) {
+                        wrapperDiv.classList.remove('expanded');
+                        imgPanel.style.maxHeight = null;
+                    } else {
+                        wrapperDiv.classList.add('expanded');
+                        imgPanel.style.maxHeight = "500px"; // Şəkil panelini tam açır
+                        
+                        // Kateqoriya panelinin öz hündürlüyünü də avtomatik genişləndirir
+                        setTimeout(() => {
+                            panel.style.maxHeight = panel.scrollHeight + 500 + "px";
+                        }, 50);
+                    }
+                });
+            }
+
+            gridDiv.appendChild(wrapperDiv);
         });
 
         panel.appendChild(gridDiv);
