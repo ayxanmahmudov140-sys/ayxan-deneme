@@ -26,7 +26,7 @@
             height: 100%;
             z-index: -1;
             background: linear-gradient(to bottom, rgba(26, 15, 10, 0.94), rgba(26, 15, 10, 0.94)), 
-                        url('fon.jpg') no-repeat center center;
+                        url('fon.jpeg') no-repeat center center;
             background-size: cover;
         }
 
@@ -43,7 +43,7 @@
             align-items: center;
             justify-content: space-between;
             background: linear-gradient(to bottom, rgba(26, 15, 10, 0.88), rgba(26, 15, 10, 0.78)), 
-                        url('fon.jpg') no-repeat center center;
+                        url('fon.jpeg') no-repeat center center;
             background-size: cover;
             transition: opacity 0.8s ease, visibility 0.8s ease;
             padding: 40px 20px 20px 20px;
@@ -527,223 +527,238 @@ function enterSite() {
 }
 
 const vedMenu = {
-   "🆕 Yeni Ürünler": [
-        { name: "Mojito", price: "150 ₺", image: "images/duzmojito.jpeg", hasLargeImage: true, isSpecial: true }, // ⚠️ Bu şəkil qovluqda YOXDUR!
-        { name: "Fresh Hindistan Cevizli Moctail", price: "200 ₺", image: "images/fresh-hindistan.jpeg", hasLargeImage: true, isSpecial: true },
-        { name: "Günbatımı Moctail", price: "200 ₺", image: "images/gunbatimi.jpeg", hasLargeImage: true, isSpecial: true },
-        { name: "Blue Moon Mokteyl", price: "200 ₺", image: "images/blue.jpeg", hasLargeImage: true, isSpecial: true },
-        { name: "Kav-İvi Special", price: "200 ₺", image: "images/kav-ivi.jpeg", hasLargeImage: true, isSpecial: true },
-        { name: "Orman Meyveli Mojito", price: "170 ₺", image: "images/ormanmojito.jpeg", hasLargeImage: true, isSpecial: true }
+    "🆕 Yeni Ürünler": [
+        { name: "Mojito", price: "150 ₺", image: "images/duzmojito.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "HAVALI HİNDİSTAN CEVİZLİ MOCTAİL :)", price: "200 ₺", image: "images/fresh-hindistan.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "GÜNBATIMI MOCTAİL", price: "200 ₺", image: "images/gunbatimi.jpeg", hasLargeImage: true, isSpecial: true },
+        { name: "ORMAN MEYVELİ MOJİTO", price: "170 ₺", image: "images/ormanmojito.jpeg", hasLargeImage: true, isSpecial: true }
     ],
-    "☀️ Günün Menüsü (Ekonomi Paketler)": [
+    " Günün Menüsü (Ekonomi Paketler)": [
         { name: "Kurabiye", price: "150 ₺", image: "images/kurabiye.jpg" },
         { name: "Affogato", price: "150 ₺", image: "images/affogato.jpg" },
-        { name: "Waffle + Çay", price: "300 ₺", image: "images/waffle-cay.jpg" },
-        { name: "Tavuklu Mantarlı Makarna + Coca Cola", price: "300 ₺", image: "images/makarna-cola.jpg" },
-        { name: "Waffle + Türk Kahvesi", price: "350 ₺", image: "images/waffle-turk.jpg" },
-        { name: "Waffle + Filtre Kahve", price: "350 ₺", image: "images/waffle-filtre.jpg" },
+        { name: "Waffle + Çay", price: "300 ₺", image: "images/wafflecay.jpg" },
+        { name: "Tavuklu Mantarlı Makarna + Coca Cola", price: "300 ₺", image: "images/makarnacola.jpg" },
+        { name: "Waffle + Türk Kahvesi", price: "350 ₺", image: "images/waffleturkkahvesi.jpg" },
+        { name: "Waffle + Filtre Kahve", price: "350 ₺", image: "images/wafflefiltre.jpg" },
         { name: "Waffle + Limonata", price: "350 ₺", image: "images/waffle-limonata.jpg" },
-        { name: "Dondurmalı Waffle", price: "375 ₺", image: "images/dondurmali-waffle.jpg" },
-        { name: "Waffle + Latte", price: "390 ₺", image: "images/waffle-latte.jpg" },
-        { name: "Waffle + Portakal Suyu (Taze Sıkılmış)", price: "400 ₺", image: "images/waffle-portakal.jpg" }
+        { name: "Dondurmalı Waffle", price: "375 ₺", image: "images/dondurmaliwaffle.jpg" },
+        { name: "Waffle + Latte", price: "390 ₺", image: "images/wafflelatte.jpg" },
     ],
     "✨ Ved's Özel Menü & Specials": [
-        { name: "Ved's Limonata", price: "175 ₺", image: "images/veds-limonata.jpg", isSpecial: true },
-        { name: "Dondurma (Külah)", price: "75 ₺", image: "images/dondurma-kulah.jpg", isSpecial: true },
-        { name: "Dondurma (Porsiyon)", price: "100 ₺", image: "images/dondurma-porsiyon.jpg", isSpecial: true },
-        { name: "Portakal Suyu + Makarna", price: "325 ₺", image: "images/portakal-makarna.jpg", isSpecial: true },
+        { name: "Ved's Limonata", price: "175 ₺", image: "images/vedslimonata.jpg", isSpecial: true },
         { name: "Arkadaş Menü (Waffle + 2 Çay)", price: "350 ₺", image: "images/arkadas-menu.jpg", isSpecial: true },
-        { name: "Makarna + Patates Kızartması + Cola", price: "450 ₺", image: "images/makarna-patates-cola.jpg", isSpecial: true }
+        { name: "MAKARNA + PATATES KIZARTMASI + COLA", price: "450 ₺", image: "images/makarnapatatescola.jpg", isSpecial: true }
     ],
-    "🥪 Tostlar & Dürümler (Wrap)": [
-        { name: "Sucuklu Tost", price: "150 ₺", image: "images/sucuklu-tost.jpg" },
-        { name: "Yumurta Kaşar Tost", price: "175 ₺", image: "images/yumurta-kasar.jpg" },
-        { name: "Kaşarlı Tost", price: "175 ₺", image: "images/kasarli-tost.jpg" },
-        { name: "Karışık Tost", price: "200 ₺", image: "images/karisik-tost.jpg" },
-        { name: "Tavuklu Wrap", price: "225 ₺", image: "images/tavuklu-wrap.jpg" },
-        { name: "Duble Tost", price: "225 ₺", image: "images/duble-tost.jpg" },
-        { name: "Atom Tost", price: "250 ₺", image: "images/atom-tost.jpg" }
+    " Tostlar": [
+        { name: "ATOM", price: "250 ₺", image: "images/atom.jpg" },
+        { name: "YUMURTA KAŞAR", price: "175 ₺", image: "images/yumurtakasar.jpg" },
+        { name: "SUCUKLU TOST", price: "150 ₺", image: "images/sucuklutost.jpg" },
+        { name: "KAŞARLI TOST", price: "175 ₺", image: "images/kasarlitost.jpg" },
+        { name: "KARIŞIK TOST", price: "200 ₺", image: "images/karisiktost.jpg" },
+        { name: "DUBLE TOST", price: "225 ₺", image: "images/doubletost.jpg" }
     ],
-    "🍝 Makarnalar": [
-        { name: "Kremalı Makarna", price: "200 ₺", image: "images/kremali-makarna.jpg" },
-        { name: "Mantarlı Kremalı Makarna", price: "225 ₺", image: "images/mantarli-kremali.jpg" },
-        { name: "Tavuklu Kremalı Makarna", price: "225 ₺", image: "images/tavuklu-kremali.jpg" },
-        { name: "Kremalı Tavuklu Mantarlı Makarna", price: "250 ₺", image: "images/kremali-tavuklu-mantarli.jpg" },
-        { name: "Körili Tavuklu Makarna", price: "250 ₺", image: "images/korili-tavuklu.jpg" },
-        { name: "Körili Tavuklu Mantarlı Makarna", price: "275 ₺", image: "images/korili-tavuklu-mantarli.jpg" }
+    " Makarnalar": [
+        { name: "KÖRİLİ TAVUKLU MANTARLI MAKARNA", price: "275 ₺", image: "images/korilitavuklumantarlimakarna.jpg" },
+        { name: "KREMALI TAVUKLU MANTARLI MAKARNA", price: "250 ₺", image: "images/kremalimantarlitavuklumakarna.jpg" },
+        { name: "MANTARLI KREMALI MAKARNA", price: "225 ₺", image: "images/tavuklumakarna.jpeg" },
+        { name: "TAVUKLU KREMALI MAKARNA", price: "225 ₺", image: "images/kremalitavuklumakarna.jpeg" },
+        { name: "KÖRİLİ TAVUKLU MANTARLI MAKARNA", price: "275 ₺", image: "images/korilitavuklumantarlimakarna.jpg" },
+        { name: "KÖRİLİ TAVUKLU MAKARNA", price: "250 ₺", image: "images/korilitavuklumakarna.jpg" },
+        { name: "KREMALI MAKARNA", price: "200 ₺", image: "images/kremalimakarna.jpg" },
+        { name: "SADE MAKARNA", price: "175 ₺", image: "images/sademakarna.png" }
     ],
-    "🍟 Atıştırmalıklar": [
-        { name: "Patates Kızartması", price: "150 ₺", image: "images/patates-kizartmasi.jpg" },
-        { name: "Ved's Full Karışık Sepet", price: "225 ₺", image: "images/veds-sepet.jpg" }
+    " Wrapler": [
+        { name: "TAVUKLU WRAP", price: "300 ₺", image: "images/tavukluwrap.jpg" }
     ],
-    "☕ Kahve Çeşitleri (Türk Kahveleri)": [
-        { name: "Türk Kahvesi", price: "100 ₺", image: "images/turk-kahvesi.jpg" },
-        { name: "Menengiç Kahvesi", price: "100 ₺", image: "images/menengic.jpg" },
-        { name: "Damla Sakızlı Türk Kahvesi", price: "100 ₺", image: "images/damla-sakizli.jpg" },
-        { name: "Çikolatalı Türk Kahvesi", price: "100 ₺", image: "images/cikolatali-turk.jpg" },
-        { name: "Sütlü Türk Kahvesi", price: "125 ₺", image: "images/sutlu-turk.jpg" },
-        { name: "Duble Türk Kahvesi", price: "125 ₺", image: "images/duble-turk.jpg" },
-        { name: "Duble Çikolata Türk Kahvesi", price: "125 ₺", image: "images/duble-cikolata.jpg" },
-        { name: "Duble Menengiç Kahvesi", price: "125 ₺", image: "images/duble-menengic.jpg" },
-        { name: "Duble Damla Sakızlı Türk Kahvesi", price: "125 ₺", image: "images/duble-damla.jpg" },
-        { name: "Duble Sütlü Türk Kahvesi", price: "125 ₺", image: "images/duble-sutlu.jpg" },
-        { name: "Süvari Türk Kahvesi", price: "125 ₺", image: "images/suvari.jpg" }
+    " Atıştırmalıklar": [
+        { name: "Patates Kızartması", price: "150 ₺", image: "images/patateskizartmasi.jpg" },
+        { name: "Ved's Full Karışık Sepet", price: "225 ₺", image: "images/karisiksepet.jpg" }
     ],
-    "🌍 Dünya Kahveleri (Sıcak)": [
-        { name: "Expresso Shot", price: "50 ₺", image: "images/espresso-shot.jpg" },
-        { name: "Espresso Single", price: "70 ₺", image: "images/espresso-single.jpg" },
-        { name: "Single Espresso", price: "100 ₺", image: "images/single-espresso.jpg" },
-        { name: "Americano", price: "110 ₺", image: "images/americano.jpg" },
-        { name: "Espresso Double", price: "125 ₺", image: "images/espresso-double.jpg" },
-        { name: "Sütlü Nescafe", price: "125 ₺", image: "images/sutlu-nescafe.jpg" },
-        { name: "Nescafe Gold", price: "125 ₺", image: "images/nescafe-gold.jpg" },
-        { name: "Filtre Kahve", price: "130 ₺", image: "images/filtre-kahve.jpg" },
-        { name: "Chai Tea Latte", price: "135 ₺", image: "images/chai-latte.jpg" },
-        { name: "Cafe Latte", price: "145 ₺", image: "images/cafe-latte.jpg" },
-        { name: "Aromalı Latte", price: "155 ₺", image: "images/aromali-latte.jpg" },
-        { name: "Karamel Latte", price: "155 ₺", image: "images/karamel-latte.jpg" },
-        { name: "Cafe Mocha", price: "155 ₺", image: "images/cafe-mocha.jpg" },
-        { name: "White Chocolate Mocha", price: "155 ₺", image: "images/white-mocha.jpg" },
-        { name: "Blue Chocolate Mocha", price: "155 ₺", image: "images/blue-mocha.jpg" },
-        { name: "Toffenut Mocha", price: "155 ₺", image: "images/toffenut-mocha.jpg" },
-        { name: "Rasberry White Mocha", price: "155 ₺", image: "images/raspberry-mocha.jpg" },
-        { name: "Cappucino", price: "165 ₺", image: "images/cappuccino.jpg" },
-        { name: "Flat White", price: "175 ₺", image: "images/flat-white.jpg" },
-        { name: "Caramel Macchiato", price: "175 ₺", image: "images/caramel-macchiato.jpg" }
+    " Dünya Kahveleri (Sıcak)": [
+        { name: "RASBERRY WHİTE MOCHA", price: "155 ₺", image: "images/raspberry-white-mocha.jpg" },
+        { name: "VANİLYA LATTE", price: "155 ₺", image: "images/vanilya-latte.jpg" },
+        { name: "FINDIKLI LATTE", price: "155 ₺", image: "images/findikli-latte.jpg" },
+        { name: "KARAMEL LATTE", price: "155 ₺", image: "images/karamel-latte.jpg" },
+        { name: "ESPRESSO SHOT", price: "50 ₺", image: "images/espresso-shot.jpg" },
+        { name: "FLAT WHİTE", price: "175 ₺", image: "images/flat-white.jpg" },
+        { name: "SİNGLE ESPRESSO", price: "100 ₺", image: "images/single-espresso.jpg" },
+        { name: "ESPRESSO DOUBLE", price: "125 ₺", image: "images/espresso-double.jpg" },
+        { name: "AMERİCANO", price: "130 ₺", image: "images/americano.jpg" },
+        { name: "WHITE CHOCOLATE MOCHA", price: "155 ₺", image: "images/white-mocha.jpg" },
+        { name: "CAFE MOCHA", price: "155 ₺", image: "images/cafe-mocha.jpg" },
+        { name: "CARAMEL MACCHIATO", price: "175 ₺", image: "images/caramel-macchiato.jpg" },
+        { name: "SÜTLÜ NESCAFE", price: "125 ₺", image: "images/sutlu-nescafe.jpg" },
+        { name: "CAFE LATTE", price: "145 ₺", image: "images/cafe-latte.jpg" },
+        { name: "NESCAFE GOLD", price: "125 ₺", image: "images/nescafe-gold.jpg" },
+        { name: "FİLTRE KAHVE", price: "130 ₺", image: "images/filtre-kahve.jpg" },
+        { name: "CAPPUCINO", price: "165 ₺", image: "images/cappuccino.jpg" },
+        { name: "BLUE CHOCOLATE MOCHA", price: "155 ₺", image: "images/blue-mocha.jpg" },
+        { name: "TOFFENUT LATTE", price: "155 ₺", image: "images/toffenut-mocha.jpg" }
     ],
-    "🧊 Soğuk Kahveler": [
-        { name: "Ice Americano", price: "130 ₺", image: "images/ice-americano.jpg" },
-        { name: "Ice Filtre Kahve", price: "140 ₺", image: "images/ice-filtre.jpg" },
-        { name: "Ice Latte", price: "150 ₺", image: "images/ice-latte.jpg" },
-        { name: "Ice Vanilla Latte", price: "155 ₺", image: "images/ice-vanilla.jpg" },
-        { name: "Ice Karamel Latte", price: "155 ₺", image: "images/ice-karamel-latte.jpg" },
-        { name: "Ice Mocha", price: "155 ₺", image: "images/ice-mocha.jpg" },
-        { name: "Ice White Chocolate Mocha", price: "155 ₺", image: "images/ice-white-mocha.jpg" },
-        { name: "Ice Karamel Macchiato", price: "175 ₺", image: "images/ice-macchiato.jpg" },
-        { name: "Ice Dubai Chocolate", price: "200 ₺", image: "images/ice-dubai.jpg" }
+    " Soğuk Kahveler": [
+        { name: "ICE KARAMEL MACCHİATO", price: "175 ₺", image: "images/ice-macchiato.jpg" },
+        { name: "ICE VANILLA LATTE", price: "160 ₺", image: "images/ice-vanilla.jpg" },
+        { name: "ICE AMERICANO", price: "140 ₺", image: "images/ice-americano.jpg" },
+        { name: "ICE LATTE", price: "150 ₺", image: "images/ice-latte.jpg" },
+        { name: "ICE WHITE CHOCOLATE MOCHA", price: "160 ₺", image: "images/ice-white-mocha.jpg" },
+        { name: "ICE MOCHA", price: "160 ₺", image: "images/ice-mocha.jpg" },
+        { name: "ICE KARAMEL LATTE", price: "160 ₺", image: "images/ice-karamel-latte.jpg" },
+        { name: "ICE FİLTRE KAHVE", price: "140 ₺", image: "images/ice-filtre.jpg" },
+        { name: "ICE TOFFENUT LATTE", price: "160 ₺", image: "images/ice-toffenut-latte.jpg" },
+        { name: "ICE RASPBERRY WHİTE MOCHA", price: "170 ₺", image: "images/ice-raspberry-mocha.jpg" },
+        { name: "ICE BLUE CHOCOLATE MOCHA", price: "170 ₺", image: "images/ice-blue-mocha.jpg" }
     ],
-    "🍫 Sıcak Çikolata & Sahlep": [
-        { name: "Süt", price: "80 ₺", image: "images/sut.jpg" },
-        { name: "Ballı Süt", price: "100 ₺", image: "images/balli-sut.jpg" },
-        { name: "Muzlu Süt (Sıcak)", price: "100 ₺", image: "images/muzlu-sut-sicak.jpg" },
-        { name: "Muzlu Süt (Soğuk)", price: "110 ₺", image: "images/muzlu-sut-soguk.jpg" },
-        { name: "Sıcak Çikolata", price: "150 ₺", image: "images/sicak-cikolata.jpg" },
-        { name: "Beyaz Çikolata", price: "150 ₺", image: "images/beyaz-cikolata.jpg" },
-        { name: "Soğuk Çikolata", price: "150 ₺", image: "images/soguk-cikolata.jpg" },
-        { name: "Sahlep", price: "150 ₺", image: "images/sahlep.jpg" },
-        { name: "Aromalı Sıcak Çikolata", price: "175 ₺", image: "images/aromali-sicak-cikolata.jpg" }
+    " Kahve Çeşitleri (Türk Kahvesi)": [
+        { name: "TÜRK KAHVESİ", price: "100 ₺", image: "images/turk-kahvesi.jpg" },
+        { name: "MENENGİÇ KAHVESİ", price: "100 ₺", image: "images/menengic.jpg" },
+        { name: "SÜTLÜ TÜRK KAHVESİ", price: "125 ₺", image: "images/sutlu-turk.jpg" },
+        { name: "DUBLE TÜRK KAHVESİ", price: "125 ₺", image: "images/duble-turk.jpg" },
+        { name: "DAMLA SAKIZLI TÜRK KAHVESİ", price: "100 ₺", image: "images/damla-sakizli.jpg" },
+        { name: "DUBLE MENENGİÇ KAHVESİ", price: "125 ₺", image: "images/duble-menengic.jpg" },
+        { name: "DUBLE DAMLA SAKIZLI TÜRK KAHVESİ", price: "125 ₺", image: "images/duble-damla-sakizli.jpg" },
+        { name: "DUBLE SÜTLÜ TÜRK KAHVESİ", price: "125 ₺", image: "images/duble-sutlu-turk.jpg" },
+        { name: "SÜVARİ TÜRK KAHVESİ", price: "125 ₺", image: "images/suvari-turk.jpg" }
     ],
-    "🍵 Matcha Serisi": [
-        { name: "Mango Matcha", price: "160 ₺", image: "images/mango-matcha.jpg" },
-        { name: "Strawberry Matcha", price: "160 ₺", image: "images/strawberry-matcha.jpg" },
-        { name: "Ice Mango Matcha", price: "180 ₺", image: "images/ice-mango-matcha.jpg" },
-        { name: "Ice Strawberry Matcha", price: "180 ₺", image: "images/ice-strawberry-matcha.jpg" }
+    " Çay ve Oraletler": [
+        { name: "ÇAY", price: "50 ₺", image: "images/cay.jpg" },
+        { name: "ÇİLEK ORALET", price: "60 ₺", image: "images/cilek-oralet.jpg" },
+        { name: "PORTAKAL ORALET", price: "60 ₺", image: "images/portakal-oralet.jpg" },
+        { name: "KUŞBURNU ORALET", price: "60 ₺", image: "images/kusburnu-oralet.jpg" },
+        { name: "TİRYAKİ ÇAY", price: "50 ₺", image: "images/tiryaki-cay.jpg" },
+        { name: "KUPA ÇAY", price: "80 ₺", image: "images/kupa-cay.jpg" },
+        { name: "KİVİ ORALET", price: "60 ₺", image: "images/kivi-oralet.jpg" },
+        { name: "MUZ ORALET", price: "60 ₺", image: "images/muz-oralet.jpg" },
+        { name: "KARADUT ORALET", price: "60 ₺", image: "images/karadut-oralet.jpg" },
+        { name: "ELMA ORALET", price: "60 ₺", image: "images/elma-oralet.jpg" },
+        { name: "NANE LİMON ORALET", price: "60 ₺", image: "images/nane-limon-oralet.jpg" },
+        { name: "KAKAO ORALET", price: "60 ₺", image: "images/kakao-oralet.jpg" }
     ],
-    "🍧 Frappe": [
-        { name: "Çikolata Frappe", price: "170 ₺", image: "images/cikolata-frappe.jpg" },
-        { name: "Karamel Frappe", price: "170 ₺", image: "images/karamel-frappe.jpg" },
-        { name: "Toffenut Frappe", price: "170 ₺", image: "images/toffenut-frappe.jpg" },
-        { name: "Oreo Frappe", price: "180 ₺", image: "images/oreo-frappe.jpg" }
+    " Nargile": [
+        { name: "MANTERRA DARK TÜTÜN", price: "550 ₺", image: "images/manterradarktutun.jpg" },
+        { name: "KÖZ DEĞİŞİMİ", price: "100 ₺", image: "images/koz-degisimi.jpg" },
+        { name: "NARGİLE", price: "400 ₺", image: "images/nargile.jpg" },
+        { name: "ANASON/CAPİCİNO/ÜZÜM", price: "450 ₺", image: "images/nargile.jpg" },
+        { name: "LÜLE DEĞİŞİM", price: "200 ₺", image: "images/lule-degisim.jpg" },
+        { name: "MİX NARGİLE", price: "450 ₺", image: "images/nargile.jpg" }
     ],
-    "🧋 Smoothieler": [
-        { name: "Şeftalili Smoothie", price: "175 ₺", image: "images/seftali-smoothie.jpg" },
-        { name: "Kivili Smoothie", price: "175 ₺", image: "images/kivi-smoothie.jpg" },
-        { name: "Çilek Smoothie", price: "175 ₺", image: "images/cilek-smoothie.jpg" },
-        { name: "Elmalı Smoothie", price: "175 ₺", image: "images/elma-smoothie.jpg" },
-        { name: "Mango Çarkıfelek Smoothie", price: "175 ₺", image: "images/mango-carkifelek.jpg" },
-        { name: "Orman Meyveli Smoothie", price: "175 ₺", image: "images/orman-meyveli-smoothie.jpg" }
+     " Meşrubatlar": [
+        { name: "FUSE TEA KARPUZ", price: "100 ₺", image: "images/fuse-tea-karpuz.jpg" },
+        { name: "FUSE TEA ŞEFTALİ", price: "100 ₺", image: "images/fuse-tea-seftali.jpg" },
+        { name: "FREŞA NARLI", price: "75 ₺", image: "images/fresa-narli.jpg" },
+        { name: "FREŞA KARADUT FRENK ÜZÜMLÜ", price: "75 ₺", image: "images/fresa-karadut.jpg" },
+        { name: "FREŞA ORMAN EYVELİ", price: "75 ₺", image: "images/fresa-orman.jpg" },
+        { name: "COCA COLA", price: "100 ₺", image: "images/coca-cola.jpg" },
+        { name: "FANTA", price: "100 ₺", image: "images/fanta.jpg" },
+        { name: "SU", price: "40 ₺", image: "images/su.jpg" },
+        { name: "SADE SODA", price: "60 ₺", image: "images/sade-soda.jpg" },
+        { name: "MEYVELİ SODALAR", price: "75 ₺", image: "images/meyveli-soda.jpg" },
+        { name: "CHURCHILL", price: "100 ₺", image: "images/churchill.jpg" },
+        { name: "REDBULL 250 ML", price: "135 ₺", image: "images/redbull.jpg" },
+        { name: "AYRAN", price: "100 ₺", image: "images/ayran.jpg" },
+        { name: "SPRITE", price: "100 ₺", image: "images/sprite.jpg" },
+        { name: "FUSE TEA MANGO", price: "100 ₺", image: "images/fuse-tea-mango.jpg" }
     ],
-    "🍹 Fruit Mix & Lime Çeşitleri": [
-        { name: "Pineapple Lime", price: "160 ₺", image: "images/pineapple-lime.jpg" },
-        { name: "Blueberry Lime", price: "160 ₺", image: "images/blueberry-lime.jpg" },
-        { name: "Redberry Lime", price: "160 ₺", image: "images/redberry-lime.jpg" },
-        { name: "Şeftali Lime", price: "160 ₺", image: "images/seftali-lime.jpg" },
-        { name: "Strawberry Hibiscus", price: "160 ₺", image: "images/strawberry-hibiscus.jpg" },
-        { name: "Raspberry Açaí", price: "160 ₺", image: "images/raspberry-acai.jpg" }
+    " Okey Saat Ücreti": [
+        { name: "MASA AÇMA", price: "1 ₺", image: "images/okey.jpg" },
+        { name: "PASTA SERVİS ÜCRETI (kisi basi)", price: "50 ₺", image: "images/pasta-servis.jpg" },
+        { name: "1 SAAT", price: "150 ₺", image: "images/1saat.jpg" },
+        { name: "YARIM SAAT", price: "75 ₺", image: "images/yarimsaat.jpg" }
     ],
-    "🍹 Frozenler": [
-        { name: "Yaban Mersini Frozen", price: "150 ₺", image: "images/yaban-mersini-frozen.jpg" },
-        { name: "Yeşil Elma Frozen", price: "175 ₺", image: "images/yesil-elma-frozen.jpg" },
-        { name: "Mango Frozen", price: "175 ₺", image: "images/mango-frozen.jpg" },
-        { name: "Şeftalili Frozen", price: "175 ₺", image: "images/seftali-frozen.jpg" },
-        { name: "Karpuz Frozen", price: "175 ₺", image: "images/karpuz-frozen.jpg" },
-        { name: "Ananas Frozen", price: "175 ₺", image: "images/ananas-frozen.jpg" },
-        { name: "Çilekli Frozen", price: "175 ₺", image: "images/cilek-frozen.jpg" },
-        { name: "Çarkıfelek Frozen", price: "175 ₺", image: "images/carkifelek-frozen.jpg" },
-        { name: "Orman Meyveli Frozen", price: "175 ₺", image: "images/orman-meyveli-frozen.jpg" },
-        { name: "Kavun Frozen", price: "175 ₺", image: "images/kavun-frozen.jpg" },
-        { name: "Kivili Frozen", price: "175 ₺", image: "images/kivi-frozen.jpg" },
-        { name: "Frambuazlı Frozen", price: "175 ₺", image: "images/frambuaz-frozen.jpg" }
+    " Fruit Mix & Lime Çeşitleri": [
+        { name: "MANGO LİME", price: "160 ₺", image: "images/mangolime.jpg" },
+        { name: "PİNEAPPLE LİME", price: "160 ₺", image: "images/pinapplelime.jpg" },
+        { name: "BLUEBERRY LİME", price: "160 ₺", image: "images/blueberrylime.jpg" },
+        { name: "REDBERRY LİME", price: "160 ₺", image: "images/redberrylime.jpg" },
+        { name: "ŞEFTALİ LİME", price: "160 ₺", image: "images/seftalilime.jpg" },
+        { name: "STRAWBERRY HİBİSCUS", price: "160 ₺", image: "images/stravberryhibicus.jpg" },
+        { name: "RASPBERRY ACAİ", price: "160 ₺", image: "images/acailime.jpg" }
     ],
-    "🍋 Limonatalar": [
-        { name: "Sade Limonata", price: "125 ₺", image: "images/sade-limonata.jpg" },
-        { name: "Çilekli Limonata", price: "150 ₺", image: "images/cilekli-limonata.jpg" },
-        { name: "Naneli Limonata", price: "150 ₺", image: "images/naneli-limonata.jpg" },
-        { name: "Elmalı Limonata", price: "150 ₺", image: "images/elmali-limonata.jpg" },
-        { name: "Çarkıfelekli Limonata", price: "150 ₺", image: "images/carkifelekli-limonata.jpg" },
-        { name: "Orman Meyveli Limonata", price: "150 ₺", image: "images/orman-meyveli-limonata.jpg" }
+    " Frappe": [
+        { name: "TOFFENUT FRAPPE", price: "180 ₺", image: "images/tofenutfrappe.jpg" },
+        { name: "LOTUS FRAPPE", price: "200 ₺", image: "images/lotusfrappe.jpg" },
+        { name: "OREO FRAPPE", price: "200 ₺", image: "images/oreofrappe.jpg" },
+        { name: "ÇİKOLATALI FRAPPE", price: "180 ₺", image: "images/cikofrappe.jpg" },
+        { name: "KARAMEL FRAPPE", price: "180 ₺", image: "images/karamelfrappe.jpg" },
+        { name: "RASPBERRY WHİTE FRAPPE", price: "180 ₺", image: "images/raspberyvhitefrappe.jpg" },
+        { name: "BLUE CHOCOLATE FRAPPE", price: "180 ₺", image: "images/bluechocolatefrappe.jpg" }
     ],
-    "🫖 Şifa ve Bitki Çayları": [
-        { name: "Melisa Çayı", price: "120 ₺", image: "images/melisa-cayi.jpg" },
-        { name: "Sessizlik Çayı", price: "120 ₺", image: "images/sessizlik-cayi.jpg" },
-        { name: "Nane Limon Çayı", price: "120 ₺", image: "images/nane-limon.jpg" },
-        { name: "Ihlamur Çayı", price: "120 ₺", image: "images/ihlamur.jpg" },
-        { name: "Papatya Çayı", price: "120 ₺", image: "images/papatya.jpg" },
-        { name: "Ada Çayı", price: "120 ₺", image: "images/ada-cayi.jpg" },
-        { name: "Yeşil Çay", price: "120 ₺", image: "images/yesil-cay.jpg" },
-        { name: "Kekik Çayı", price: "120 ₺", image: "images/kekik-cayi.jpg" },
-        { name: "Kış Çayı", price: "120 ₺", image: "images/kis-cayi.jpg" },
-        { name: "Blue Flower Tea", price: "145 ₺", image: "images/blue-flower.jpg" },
-        { name: "Hibiscus Lemonade Tea", price: "145 ₺", image: "images/hibiscus-tea.jpg" },
-        { name: "Carnaval Tea", price: "145 ₺", image: "images/carnaval-tea.jpg" },
-        { name: "Winter Dream", price: "145 ₺", image: "images/winter-dream.jpg" },
-        { name: "Raspberry Punch Tea", price: "145 ₺", image: "images/raspberry-punch.jpg" },
-        { name: "Extra Bal", price: "35 ₺", image: "images/bal.jpg" }
+    " Frozenler": [
+        { name: "ÇİLEKLİ FROZEN", price: "175 ₺", image: "images/cilekfrozen.jpg" },
+        { name: "ÇARKIFELEK FROZEN", price: "175 ₺", image: "images/carkifelekfrozen.jpg" },
+        { name: "ORMAN MEYVELİ FROZEN", price: "175 ₺", image: "images/orman-meyveli-frozen.jpg" },
+        { name: "KAVUN FROZEN", price: "175 ₺", image: "images/kavun-frozen.jpg" },
+        { name: "KİVİLİ FROZEN", price: "175 ₺", image: "images/kivi-frozen.jpg" },
+        { name: "FRAMBUAZLI FROZEN", price: "175 ₺", image: "images/frambuaz-frozen.jpg" },
+        { name: "YEŞİL ELMA FROZEN", price: "175 ₺", image: "images/yesil-elma-frozen.jpg" },
+        { name: "MANGO FROZEN", price: "175 ₺", image: "images/mango-frozen.jpg" },
+        { name: "ŞEFTALİLİ FROZEN", price: "175 ₺", image: "images/seftali-frozen.jpg" },
+        { name: "KARPUZ FROZEN", price: "175 ₺", image: "images/karpuz-frozen.jpg" },
+        { name: "YABAN MERSİNİ FROZEN", price: "150 ₺", image: "images/yaban-mersini-frozen.jpg" },
+        { name: "ANANAS FROZEN", price: "175 ₺", image: "images/ananas-frozen.jpg" }
     ],
-    "🍵 Çay ve Oraletler": [
-        { name: "Çay", price: "50 ₺", image: "images/cay.jpg" },
-        { name: "Tiryaki Çay", price: "50 ₺", image: "images/tiryaki-cay.jpg" },
-        { name: "Kupa Çay", price: "80 ₺", image: "images/kupa-cay.jpg" },
-        { name: "Çilek Oralet", price: "60 ₺", image: "images/cilek-oralet.jpg" },
-        { name: "Portakal Oralet", price: "60 ₺", image: "images/portakal-oralet.jpg" },
-        { name: "Kuşburnu Oralet", price: "60 ₺", image: "images/kusburnu-oralet.jpg" },
-        { name: "Kivi Oralet", price: "60 ₺", image: "images/kivi-oralet.jpg" },
-        { name: "Muz Oralet", price: "60 ₺", image: "images/muz-oralet.jpg" },
-        { name: "Karadut Oralet", price: "60 ₺", image: "images/karadut-oralet.jpg" },
-        { name: "Elma Oralet", price: "60 ₺", image: "images/elma-oralet.jpg" },
-        { name: "Nane Limon Oralet", price: "60 ₺", image: "images/nane-limon-oralet.jpg" },
-        { name: "Kakao Oralet", price: "60 ₺", image: "images/kakao-oralet.jpg" }
+    " Limonatalar": [
+        { name: "SADE LİMONATA", price: "125 ₺", image: "images/sade-limonata.jpg" },
+        { name: "ÇİLEKLİ LİMONATA", price: "150 ₺", image: "images/cilekli-limonata.jpg" },
+        { name: "NANELİ LİMONATA", price: "150 ₺", image: "images/naneli-limonata.jpg" },
+        { name: "ELMALI LİMONATA", price: "150 ₺", image: "images/elmali-limonata.jpg" },
+        { name: "ÇARKIFELEKLİ LİMONATA", price: "150 ₺", image: "images/carkifelekli-limonata.jpg" },
+        { name: "ORMAN MEYVELİ LİMONATA", price: "150 ₺", image: "images/orman-meyveli-limonata.jpg" },
+        { name: "VED'S LİMONATA", price: "175 ₺", image: "images/veds-limonata.jpg" }
     ],
-    "🍨 Dondurmalı Milkshake": [
-        { name: "Karpuzlu Milkshake", price: "200 ₺", image: "images/karpuzlu-milkshake.jpg" },
-        { name: "Çarkıfelek Milkshake", price: "200 ₺", image: "images/carkifelek-milkshake.jpg" },
-        { name: "Mango Milkshake", price: "200 ₺", image: "images/mango-milkshake.jpg" },
-        { name: "Kavunlu Milkshake", price: "200 ₺", image: "images/kavunlu-milkshake.jpg" },
-        { name: "Lotus Milkshake", price: "150 ₺", image: "images/lotus-milkshake.jpg" },
-        { name: "Orman Meyveli Milkshake", price: "200 ₺", image: "images/orman-meyveli-milkshake.jpg" },
-        { name: "Vanilyalı Milkshake", price: "200 ₺", image: "images/vanilyali-milkshake.jpg" },
-        { name: "Karamelli Milkshake", price: "200 ₺", image: "images/karamelli-milkshake.jpg" },
-        { name: "Çikolata Milkshake", price: "200 ₺", image: "images/cikolata-milkshake.jpg" },
-        { name: "Çilekli Milkshake", price: "200 ₺", image: "images/cilekli-milkshake.jpg" },
-        { name: "Kivili Milkshake", price: "200 ₺", image: "images/kivili-milkshake.jpg" },
-        { name: "Oreolu Milkshake", price: "250 ₺", image: "images/oreolu-milkshake.jpg" },
-        { name: "Muzlu Milkshake", price: "200 ₺", image: "images/muzlu-milkshake.jpg" },
-        { name: "Böğürtlen Milkshake", price: "200 ₺", image: "images/bogurtlen-milkshake.jpg" },
-        { name: "Şeftali Milkshake", price: "200 ₺", image: "images/seftali-milkshake.jpg" },
-        { name: "Hindistan Cevizli Milkshake", price: "200 ₺", image: "images/hindistan-cevizli-milkshake.jpg" }
+    " Smoothieler": [
+        { name: "ŞEFTALİLİ SMOOTHİE", price: "175 ₺", image: "images/seftali-smoothie.jpg" },
+        { name: "KİVİLİ SMOOTHİE", price: "175 ₺", image: "images/kivi-smoothie.jpg" },
+        { name: "ÇİLEK SMOOTHİE", price: "175 ₺", image: "images/cilek-smoothie.jpg" },
+        { name: "ELMALI SMOOTHİE", price: "175 ₺", image: "images/elma-smoothie.jpg" },
+        { name: "MANGO ÇARKIFELEK SMOOTHİE", price: "175 ₺", image: "images/mango-carkifelek.jpg" }
     ],
-    "🧇 Waffle's": [
-        { name: "Waffle", price: "300 ₺", image: "images/waffle.jpg" },
-        { name: "Double Wafflee", price: "450 ₺", image: "images/double-waffle.jpg" }
+    " Dondurmalı Milkshake": [
+        { name: "MANGO MİLKSHAKE", price: "200 ₺", image: "images/mango-milkshake.jpg" },
+        { name: "KARPUZLU MİLKSHAKE", price: "200 ₺", image: "images/karpuzlu-milkshake.jpg" },
+        { name: "ÇARKIFELEK MİLKSHAKE", price: "200 ₺", image: "images/carkifelek-milkshake.jpg" },
+        { name: "KAVUNLU MİLKSHAKE", price: "200 ₺", image: "images/kavunlu-milkshake.jpg" },
+        { name: "LOTUS MİLKSHAKE", price: "250 ₺", image: "images/lotus-milkshake.jpg" },
+        { name: "ORMAN MEYVELİ MİLKSHAKE", price: "200 ₺", image: "images/orman-meyveli-milkshake.jpg" },
+        { name: "VANİLYALI MİLKSHAKE", price: "200 ₺", image: "images/vanilyali-milkshake.jpg" },
+        { name: "KARAMELLİ MİLKSHAKE", price: "200 ₺", image: "images/karamelli-milkshake.jpg" },
+        { name: "ÇİKOLATA MİLKSHAKE", price: "200 ₺", image: "images/cikolata-milkshake.jpg" },
+        { name: "ÇİLEKLİ MİLKSHAKE", price: "200 ₺", image: "images/cilekli-milkshake.jpg" },
+        { name: "KİVİLİ MİLKSHAKE", price: "200 ₺", image: "images/kivili-milkshake.jpg" },
+        { name: "OREOLU MİLKSHAKE", price: "250 ₺", image: "images/oreolu-milkshake.jpg" },
+        { name: "MUZLU MİLKSHAKE", price: "200 ₺", image: "images/muzlu-milkshake.jpg" },
+        { name: "BÖĞÜRTLEN MİLKSHAKE", price: "200 ₺", image: "images/bogurtlen-milkshake.jpg" },
+        { name: "ŞEFTALİ MİLKSHAKE", price: "200 ₺", image: "images/seftali-milkshake.jpg" },
+        { name: "HİNDİSTAN CEVİZLİ MİLKSHAKE", price: "200 ₺", image: "images/hindistan-cevizli-milkshake.jpg" },
+        { name: "REDVELVET MİLKSHAKE", price: "200 ₺", image: "images/redvelvet-milkshake.jpg" }
     ],
-    "💨 Nargile": [
-        { name: "Köz Değişimi", price: "100 ₺", image: "images/koz-degisimi.jpg" },
-        { name: "Lüle Değişimi", price: "200 ₺", image: "images/lule-degisimi.jpg" },
-        { name: "Nargile (Standart)", price: "400 ₺", image: "images/nargile.jpg" },
-        { name: "Anason / Capiçino / Üzüm", price: "450 ₺", image: "images/anason-nargile.jpg" },
-        { name: "Mix Nargile", price: "450 ₺", image: "images/mix-nargile.jpg" },
-        { name: "Manterra Dark Tütün", price: "550 ₺", image: "images/manterra-dark.jpg" }
-    ]
+    " Sıcak Çikolata & Sahlep": [
+        { name: "AROMALI SICAK ÇİKOLATA", price: "175 ₺", image: "images/aromali-sicak-cikolata.jpg" },
+        { name: "MUZLU SÜT ( SOĞUK )", price: "110 ₺", image: "images/muzlu-sut-soguk.jpg" },
+        { name: "SICAK ÇİKOLATA", price: "150 ₺", image: "images/sicak-cikolata.jpg" },
+        { name: "BEYAZ ÇİKOLATA", price: "150 ₺", image: "images/beyaz-cikolata.jpg" },
+        { name: "SAHLEP", price: "150 ₺", image: "images/sahlep.jpg" },
+        { name: "BALLI SÜT", price: "100 ₺", image: "images/balli-sut.jpg" },
+        { name: "SOĞUK ÇİKOLATA", price: "150 ₺", image: "images/soguk-cikolata.jpg" },
+        { name: "SÜT(SICAK)", price: "80 ₺", image: "images/sut.jpg" },
+        { name: "MUZLU SÜT ( SICAK )", price: "100 ₺", image: "images/muzlu-sut-sicak.jpg" },
+        { name: "NANELİ SOĞUK ÇİKOLATA", price: "170 ₺", image: "images/naneli-soguk-cikolata.jpg" },
+        { name: "CHAİ TEA", price: "150 ₺", image: "images/chai-tea.jpg" }
+    ],
+    "Şifa ve Bitki Çayları": [
+    { name: "NANE LİMON ÇAYI", price: "120 ₺", image: "images/nane-limon-cayi.jpg" },
+    { name: "IHLAMUR ÇAYI", price: "120 ₺", image: "images/ihlamur-cayi.jpg" },
+    { name: "PAPATYA ÇAYI", price: "120 ₺", image: "images/papatya-cayi.jpg" },
+    { name: "ADA ÇAYI", price: "120 ₺", image: "images/ada-cayi.jpg" },
+    { name: "YEŞİL ÇAY", price: "120 ₺", image: "images/yesil-cay.jpg" },
+    { name: "EXTRA BAL", price: "35 ₺", image: "images/extra-bal.jpg" },
+    { name: "KEKİK ÇAYI", price: "120 ₺", image: "images/kekik-cayi.jpg" },
+    { name: "KIŞ ÇAYI", price: "120 ₺", image: "images/kis-cayi.jpg" },
+    { name: "HİBİSCUS LEMONADE TEA", price: "145 ₺", image: "images/hibiscus-lemonade-tea.jpg" },
+    { name: "BLUE FLOWER TEA", price: "145 ₺", image: "images/blue-flower-tea.jpg" },
+    { name: "RASPBERRY PUNCH TEA", price: "145 ₺", image: "images/raspberry-punch-tea.jpg" },
+    { name: "WINTER DREAM", price: "145 ₺", image: "images/winter-dream.jpg" },
+    { name: "CARNAVAL TEA", price: "145 ₺", image: "images/carnaval-tea.jpg" }
+]
 };
 
 const accordionOutput = document.getElementById('menu-accordion-output');
